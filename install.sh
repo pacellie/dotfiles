@@ -5,7 +5,7 @@
 
 dir=~/.dotfiles
 olddir=~/.dotfiles_old
-files=".vimrc"
+files=".vimrc .gitconfig .git-completion.bash .git-prompt.sh .bash_alias .bash_profile .bash_prompt .bashrc .emacs.d/init.el .emacs.d/myinit.org"
 
 # create backup directory
 if [ ! -d $olddir ]; then
@@ -20,5 +20,10 @@ for file in $files; do
 	fi
     	ln -sfnv $dir/$file ~/
 done
+
+# adjust emacs paths
+mv ~/init.el ~/.emacs.d/
+mv ~/myinit.org ~/.emacs.d/
+echo "adjusted init.el and myinit.org paths"
 
 echo "done"

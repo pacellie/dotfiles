@@ -1,0 +1,14 @@
+[core]
+	editor = gvim
+[push]
+	default = upstream
+[merg]
+	conflictstyle = diff3
+[user]
+	name = Martin Rau
+	email = martin.rau@tum.de
+[alias]
+lol = log --graph --all --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold cyan)%d%C(reset)'
+
+[credential]
+	helper = cache

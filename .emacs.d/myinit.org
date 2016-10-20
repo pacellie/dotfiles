@@ -1,0 +1,173 @@
+
+* General
+#+begin_src emacs-lisp
+(setq inhibit-startup-message t)
+(setq initial-scratch-message nil)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(fset 'yes-or-no-p 'y-or-n-p)
+(global-set-key (kbd "<f5>") 'revert-buffer)
+(defalias 'list-buffers 'ibuffer-other-window)
+(setq-default major-mode 'org-mode)
+#+end_src
+
+* Font & Indentation
+#+begin_src emacs-lisp
+(setq-default c-basic-offset 4
+	      tab-width 4
+	      indent-tabs-mode nil)
+#+end_src
+
+* Theme
+#+begin_src emacs-lisp
+(load-theme 'leuven t)
+#+end_src
+  
+* Try
+#+begin_src emacs-lisp
+(use-package try
+  :ensure t)
+#+end_src
+
+* Which-key
+#+begin_src emacs-lisp
+(use-package which-key
+  :ensure t
+  :config (which-key-mode))
+#+end_src
+
+* Powerline
+#+begin_src emacs-lisp
+(use-package powerline
+  :ensure t
+  :config (powerline-center-evil-theme))
+#+end_src
+  
+* Ace-window
+#+begin_src emacs-lisp
+(use-package ace-window
+  :ensure t
+  :init
+  (global-set-key [remap other-window] 'ace-window))
+#+end_src
+
+* Swiper, Ivy, Counsil
+#+begin_src emacs-lisp
+(use-package counsel
+  :ensure t)
+
+(use-package swiper
+  :ensure t
+  :bind (("C-s" . swiper)
+	 ("C-r" . swiper)
+	 ("C-c C-r" . ivy-resume)
+	 ("M-x" . counsel-M-x)
+	 ("C-x C-f" . counsel-find-file))
+  :config
+  (progn
+    (ivy-mode 1)
+    (setq ivy-use-virtual-buffers t)
+    (setq ivy-display-style 'fancy)
+    (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)))
+#+end_src
+
+* Autocompletion
+#+BEGIN_SRC emacs-lisp 
+(use-package company
+  :ensure t)
+(add-hook 'after-init-hook 'global-company-mode)
+
+(use-package company-auctex
+  :ensure t)
+(company-auctex-init)
+#+END_SRC
+  
+* Evil Mode & Plugins
+#+begin_src emacs-lisp
+(use-package evil
+  :ensure t
+  :config
+  (evil-mode 1))
+
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1))
+
+(evilnc-default-hotkeys)
+
+(global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
+(global-set-key (kbd "C-c l") 'evilnc-quick-comment-or-uncomment-to-the-line)
+(global-set-key (kbd "C-c p") 'evilnc-comment-or-uncomment-paragraphs)
+#+end_src
+  
+* Line Numbers
+#+begin_src emacs-lisp
+(use-package linum-relative
+  :ensure t)
+#+end_src
+  
+* Lorem Ipsum
+#+BEGIN_SRC emacs-lisp
+(use-package lorem-ipsum
+  :ensure t
+  :bind (
+    ("C-c C-l s" . lorem-ipsum-insert-sentences)
+    ("C-c C-l p" . lorem-ipsum-insert-paragraphs)
+    ("C-c C-l l" . lorem-ipsum-insert-list)))
+#+END_SRC
+
+* Latex
+#+BEGIN_SRC emacs-lisp
+(use-package latex-preview-pane
+  :ensure t
+  :init
+  (latex-preview-pane-enable))
+#+END_SRC
+
+* Haskell Mode
+#+BEGIN_SRC emacs-lisp
+(use-package haskell-mode
+  :ensure t)
+#+END_SRC
+  
+* Flycheck
+#+BEGIN_SRC emacs-lisp
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode))
+#+END_SRC
+
+* Web-Mode
+#+BEGIN_SRC emacs-lisp
+(use-package web-mode
+  :ensure t)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode)) 
+(add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
+(add-hook 'web-mode-hook (lambda () (flycheck-mode -1)))
+#+END_SRC
+
+* Emmet
+#+BEGIN_SRC emacs-lisp
+(use-package emmet-mode
+  :ensure t)
+(add-hook 'web-mode-hook 'emmet-mode)
+#+END_SRC
+
+* Js2-Mode
+#+BEGIN_SRC emacs-lisp
+(use-package js2-mode
+  :ensure t)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+#+END_SRC
+
+* Magit
+#+BEGIN_SRC emacs-lisp
+(use-package magit
+  :ensure t)
+(global-set-key (kbd "C-x g") 'magit-status)
+#+END_SRC
+
+

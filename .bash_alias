@@ -1,0 +1,44 @@
+# enable color support of ls and grep
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+
+# path alias
+alias path='echo $PATH'
+
+# functions to run browser and open pdfs without cluttering terminal
+function openPdf() {
+    okular "$@" >&/dev/null &
+}
+
+function openBrowser() {
+    if [ $# -eq 0 ] ; then
+        google-chrome >&/dev/null &
+    else 
+        for i in "$@"; do
+        	google-chrome $i >&/dev/null &
+        done
+    fi
+}
+
+# aliases for opening pdfs and running google chrome
+alias open=openPdf
+alias inet=openBrowser
+
+# eliminate strange error after closing gvim
+alias gvim="gvim 2>/dev/null"
+
+# faster navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
