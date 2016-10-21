@@ -43,5 +43,9 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
-# eclipse
-alias eclipse='/opt/eclipse/eclipse'
+# eclipse - i really really love the eclipse installer ... 
+alias eclipse='sudo /opt/eclipse/eclipse >&/dev/null' 
+
+# hide netbeans and intellij error messages when launching from terminal
+alias netbeans='netbeans >&/dev/null &'
+alias intellij='idea >&/dev/null &'
