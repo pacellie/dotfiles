@@ -42,3 +42,6 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
+
+# eclipse
+alias eclipse='/opt/eclipse/eclipse'
