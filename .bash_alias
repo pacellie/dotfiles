@@ -12,6 +12,9 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 
+# update alias
+alias update='sudo apt-get update && sudo apt-get upgrade'
+
 # path alias
 alias path='echo $PATH'
 
