@@ -5,7 +5,7 @@
 
 dir=~/.dotfiles
 olddir=~/.dotfiles_old
-files=".vimrc .gitconfig .git-completion.bash .git-prompt.sh .bash_alias .bash_profile .bash_prompt .bashrc .emacs.d/init.el .emacs.d/myinit.org"
+files=".vimrc .gitconfig .git-completion.bash .git-prompt.sh .bash_alias .bash_profile .bash_prompt .bash_function .bashrc .emacs.d/init.el .emacs.d/myinit.org"
 
 # create backup directory
 if [ ! -d $olddir ]; then

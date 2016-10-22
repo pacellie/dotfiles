@@ -23,15 +23,26 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+# enable bash completion
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+	. /etc/bash_completion
+fi
+
 # set up multiple files to source	
-files=".bash_alias .bash_prompt .git-completion.bash"
+files=".bash_alias .bash_prompt .bash_function .git-completion.bash"
 
 for file in $files; do
 	source "$file";
 done;
 
 # export the default editor
-export EDITOR='vim';
+export EDITOR='gvim';
 
-# export the path
-export PATH=/home/martin/.stack/snapshots/x86_64-linux/lts-6.12/7.10.3/bin:/home/martin/.local/share/umake/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:$PATH
+# export java_home ? use java-8-oracle or java-8-openjdk-amd64 ?
+# export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
+# set the path with pathmunge from .bash_function
+pathmunge $HOME/.stack.snapshots/x86_64-linux/lts-6.12/7.10.3/bin	
+pathmunge $HOME/.local/share/umake/bin
+pathmunge $HOME/bin
+export PATH

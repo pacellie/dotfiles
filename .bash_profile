@@ -5,6 +5,3 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-# Ubuntu make installation of Ubuntu Make binary symlink
-# include user's private bin
-PATH=/home/martin/.local/share/umake/bin:$HOME/bin:$PATH
