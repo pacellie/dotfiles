@@ -1,6 +1,3 @@
-let mapleader=","				"set leader to ,
-" :set foldmethod=marker ... :set foldmethod=indent
-
 " Plugins {{{
 "VUNDLE CONFIGURATION START
 
@@ -19,11 +16,16 @@ Plugin 'VundleVim/Vundle.vim'
 "to update the plugins run                 :PluginUpdate
 "to delete a plugin remove it here and run :PluginClean
 
-Plugin 'tpope/vim-surround'	    		"tpope-surround
-Plugin 'scrooloose/nerdtree'			"nerdtree
-Plugin 'vim-airline/vim-airline'		"airline
-Plugin 'vim-airline/vim-airline-themes'	"airline themes
-Plugin 'lifepillar/vim-solarized8'		"theme 
+Plugin 'tpope/vim-surround'	    	    	"surround
+Plugin 'tpope/vim-commentary'               "commentary
+Plugin 'tpope/vim-repeat'                   "repeat surround and commentary cmds
+Plugin 'scrooloose/nerdtree'			    "nerdtree
+Plugin 'ntpeters/vim-better-whitespace'     "manage whitespace
+Plugin 'yggdroot/indentline'                "indent markers
+Plugin 'jiangmiao/auto-pairs'               "better ({[ ...
+Plugin 'vim-airline/vim-airline'    		"airline
+Plugin 'vim-airline/vim-airline-themes'	    "airline themes'
+Plugin 'chriskempson/base16-vim'            "theme
 
 "END PLUGINS
 
@@ -34,7 +36,7 @@ filetype plugin indent on
 filetype plugin indent on
 
 "VUNDLE CONFIGURATION END
-" }}} 
+" }}}
 
 " General {{{
 set hidden                      "allow buffer change w/o saving
@@ -42,9 +44,12 @@ set modelines=1                 "enable modelines
 " }}}
 
 " Colors {{{
-syntax enable			        		"enable syntax processing 
-colorscheme solarized8_light			"solarized color theme 
-" }}}	
+syntax enable			        		"enable syntax processing
+if has("gui_running")
+    colorscheme base16-solarized-light
+endif
+"alternative dark theme base16-ocean or light theme base16-google-light
+" }}}
 
 " Spaces & Tabs {{{
 set tabstop=4					"number of visual spaces per TAB
@@ -76,26 +81,37 @@ set foldmethod=indent				"fold based on indentation
 " }}}
 
 " Movement {{{
-nnoremap j gj					"move vertically by visual line
+nnoremap j gj
 nnoremap k gk
-nnoremap B ^    				"move to beginning/end of line
+nnoremap B ^
 nnoremap E $
-nnoremap $ <nop>				"$/^ doesn't do anything
-nnoremap ^ <nop> 
-" }}}	
+nnoremap $ <nop>
+nnoremap ^ <nop>
+" }}}
 
 " GVim {{{
-set guioptions-=m				"hide menu bar
-set guioptions-=T 				"hide toolbar
-set guioptions-=r 				"hide right scroll bar
-set guioptions-=L 				"hide left scroll bar
-set guifont=Monospace\ 12		"set font-family and font-size
-" }}}	
+if has("gui_running")
+    set guioptions-=m				"hide menu bar
+    set guioptions-=T 				"hide toolbar
+    set guioptions-=r 				"hide right scroll bar
+    set guioptions-=L 				"hide left scroll bar
+    set guifont=Monospace\ 12		"set font-family and font-size
+endif
+" }}}
 
 " Airline Settings {{{
 set laststatus=2                            "show statusline all the time
 let g:airline#extendsions#tabline#enabled=1
-let g:airline_theme='solarized'
+" }}}
+
+" Better Whitespace {{{
+autocmd BufWritePre * StripWhitespace
+" }}}
+
+" Leader Shortcuts {{{
+let mapleader="\<space>"        	    "set leader to ,
+nnoremap <leader>h :noh<CR>
+nnoremap <leader>n :NERDTree<CR>
 " }}}
 
 " vim:foldmethod=marker
