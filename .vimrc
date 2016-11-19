@@ -26,6 +26,7 @@ Plugin 'jiangmiao/auto-pairs'               "better ({[ ...
 Plugin 'vim-airline/vim-airline'    		"airline
 Plugin 'vim-airline/vim-airline-themes'	    "airline themes'
 Plugin 'chriskempson/base16-vim'            "theme
+Plugin 'scrooloose/syntastic'               "sntastic syntax checker
 
 "END PLUGINS
 
@@ -112,6 +113,24 @@ autocmd BufWritePre * StripWhitespace
 let mapleader="\<space>"        	    "set leader to ,
 nnoremap <leader>h :noh<CR>
 nnoremap <leader>n :NERDTree<CR>
+" }}}
+
+" Opam Merlin Ocaml {{{
+let g:opamshare = substitute(system('opam config var share'), '\n$', '', '''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+" }}}
+
+" Syntastic {{{
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_ocaml_checkers = ['merlin']
 " }}}
 
 " vim:foldmethod=marker
