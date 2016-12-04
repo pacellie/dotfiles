@@ -1,3 +1,4 @@
+" \u1234
 " Plugins {{{
 "VUNDLE CONFIGURATION START
 
@@ -42,6 +43,8 @@ filetype plugin indent on
 " General {{{
 set hidden                      "allow buffer change w/o saving
 set modelines=1                 "enable modelines
+set encoding=utf-8
+set fileencoding=utf-8
 " }}}
 
 " Colors {{{
