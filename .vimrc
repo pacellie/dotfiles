@@ -28,6 +28,7 @@ Plugin 'vim-airline/vim-airline'    		"airline
 Plugin 'vim-airline/vim-airline-themes'	    "airline themes'
 Plugin 'chriskempson/base16-vim'            "theme
 Plugin 'scrooloose/syntastic'               "sntastic syntax checker
+Plugin 'Valloric/YouCompleteMe'             "autocompletion
 
 "END PLUGINS
 
@@ -49,8 +50,11 @@ set fileencoding=utf-8
 
 " Colors {{{
 syntax enable			        		"enable syntax processing
+"if has("gui_running")
+"    colorscheme base16-solarized-light
+"endif
 if has("gui_running")
-    colorscheme base16-solarized-light
+     colorscheme base16-ocean
 endif
 "alternative dark theme base16-ocean or light theme base16-google-light
 " }}}
@@ -134,6 +138,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_ocaml_checkers = ['merlin']
+let g:syntastic_python_checkers = ['pylint']
 " }}}
 
 " vim:foldmethod=marker
