@@ -21,8 +21,11 @@ alias path='echo $PATH'
 # eliminate strange error after closing gvim
 alias gvim="gvim 2>/dev/null"
 
-# eclipse - i really really love the eclipse installer ... 
-alias eclipse='sudo /opt/eclipse/eclipse >&/dev/null' 
+# eclipse - i really really love the eclipse installer ...
+alias eclipse='sudo /opt/eclipse/eclipse >&/dev/null'
+
+# rstudio - throw away the garbage
+alias rstudio='rstudio >&/dev/null &'
 
 # hide netbeans and intellij error messages when launching from terminal
 alias netbeans='netbeans >&/dev/null &'
