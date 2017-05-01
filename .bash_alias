@@ -30,3 +30,6 @@ alias rstudio='rstudio >&/dev/null &'
 # hide netbeans and intellij error messages when launching from terminal
 alias netbeans='netbeans >&/dev/null &'
 alias intellij='idea >&/dev/null &'
+
+# redshift background alisa
+alias redshift='redshift &'

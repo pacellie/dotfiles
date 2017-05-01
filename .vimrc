@@ -54,7 +54,7 @@ syntax enable			        		"enable syntax processing
 "    colorscheme base16-solarized-light
 "endif
 if has("gui_running")
-     colorscheme base16-ocean
+     colorscheme base16-google-light
 endif
 "alternative dark theme base16-ocean or light theme base16-google-light
 " }}}
