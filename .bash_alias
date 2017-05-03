@@ -31,5 +31,8 @@ alias rstudio='rstudio >&/dev/null &'
 alias netbeans='netbeans >&/dev/null &'
 alias intellij='idea >&/dev/null &'
 
-# redshift background alisa
+# redshift background alias
 alias redshift='redshift &'
+
+# libre office background alias
+alias office='libreoffice &'
