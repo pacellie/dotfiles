@@ -35,4 +35,4 @@ alias intellij='idea >&/dev/null &'
 alias redshift='redshift &'
 
 # libre office background alias
-alias office='libreoffice &'
+alias office='libreoffice >&/dev/null &'
