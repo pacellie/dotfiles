@@ -28,7 +28,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 	. /etc/bash_completion
 fi
 
-# set up multiple files to source	
+# set up multiple files to source
 files=".bash_alias .bash_prompt .bash_function .git-completion.bash"
 
 for file in $files; do
@@ -42,7 +42,8 @@ export EDITOR='gvim';
 # export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 # set the path with pathmunge from .bash_function
-pathmunge $HOME/.stack.snapshots/x86_64-linux/lts-6.12/7.10.3/bin	
+pathmunge $HOME/.stack.snapshots/x86_64-linux/lts-6.12/7.10.3/bin
 pathmunge $HOME/.local/share/umake/bin
 pathmunge $HOME/bin
+pathmunge $HOME/.local/bin
 export PATH

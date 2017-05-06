@@ -24,12 +24,18 @@ alias gvim="gvim 2>/dev/null"
 # eclipse - i really really love the eclipse installer ...
 alias eclipse='sudo /opt/eclipse/eclipse >&/dev/null'
 
-# rstudio - throw away the garbage
+# rstudio - throw away the garbaged
 alias rstudio='rstudio >&/dev/null &'
 
 # hide netbeans and intellij error messages when launching from terminal
 alias netbeans='netbeans >&/dev/null &'
 alias intellij='idea >&/dev/null &'
+
+# pycharm alias
+alias pycharm='charm >&/dev/null &'
+
+# datagrip alias
+alias datagrip='/opt/DataGrip-2017.1.3/bin/datagrip.sh >&/dev/null &'
 
 # redshift background alias
 alias redshift='redshift &'
