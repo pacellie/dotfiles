@@ -38,6 +38,9 @@ done;
 # export the default editor
 export EDITOR='gvim';
 
+# export golang path GOPATH
+export GOPATH=$HOME/Documents/Code/Golang
+
 # export java_home ? use java-8-oracle or java-8-openjdk-amd64 ?
 # export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
