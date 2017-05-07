@@ -49,4 +49,5 @@ pathmunge $HOME/.stack.snapshots/x86_64-linux/lts-6.12/7.10.3/bin
 pathmunge $HOME/.local/share/umake/bin
 pathmunge $HOME/bin
 pathmunge $HOME/.local/bin
+pathmunge $HOME/Documents/Code/Golang/bin
 export PATH

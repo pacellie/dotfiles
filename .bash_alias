@@ -37,6 +37,9 @@ alias pycharm='charm >&/dev/null &'
 # datagrip alias
 alias datagrip='/opt/DataGrip-2017.1.3/bin/datagrip.sh >&/dev/null &'
 
+# goglang alias
+alias goglang='/opt/Gogland-171.3780.106/bin/gogland.sh >&/dev/null &'
+
 # redshift background alias
 alias redshift='redshift &'
 
