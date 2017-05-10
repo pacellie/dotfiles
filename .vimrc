@@ -29,6 +29,7 @@ Plugin 'vim-airline/vim-airline-themes'	    "airline themes'
 Plugin 'chriskempson/base16-vim'            "theme
 Plugin 'scrooloose/syntastic'               "sntastic syntax checker
 Plugin 'Valloric/YouCompleteMe'             "autocompletion
+Plugin 'fatih/vim-go'                       "vim golang support
 
 "END PLUGINS
 
