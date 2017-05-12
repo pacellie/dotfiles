@@ -30,6 +30,7 @@ Plugin 'chriskempson/base16-vim'            "theme
 Plugin 'scrooloose/syntastic'               "sntastic syntax checker
 Plugin 'Valloric/YouCompleteMe'             "autocompletion
 Plugin 'fatih/vim-go'                       "vim golang support
+Plugin 'ervandew/supertab'                  "insert completions with TAB
 
 "END PLUGINS
 
