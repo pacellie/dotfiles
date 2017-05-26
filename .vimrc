@@ -26,7 +26,7 @@ Plugin 'yggdroot/indentline'                "indent markers
 Plugin 'jiangmiao/auto-pairs'               "better ({[ ...
 Plugin 'vim-airline/vim-airline'    		"airline
 Plugin 'vim-airline/vim-airline-themes'	    "airline themes'
-Plugin 'chriskempson/base16-vim'            "theme
+Plugin 'chriskempson/base16-vim'            "colorschemes
 Plugin 'scrooloose/syntastic'               "sntastic syntax checker
 Plugin 'Valloric/YouCompleteMe'             "autocompletion
 Plugin 'fatih/vim-go'                       "vim golang support
@@ -52,13 +52,9 @@ set fileencoding=utf-8
 
 " Colors {{{
 syntax enable			        		"enable syntax processing
-"if has("gui_running")
-"    colorscheme base16-solarized-light
-"endif
 if has("gui_running")
-     colorscheme base16-google-light
+    colorscheme base16-google-light
 endif
-"alternative dark theme base16-ocean or light theme base16-google-light
 " }}}
 
 " Spaces & Tabs {{{
