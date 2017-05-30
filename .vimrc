@@ -52,9 +52,7 @@ set fileencoding=utf-8
 
 " Colors {{{
 syntax enable			        		"enable syntax processing
-if has("gui_running")
-    colorscheme base16-google-light
-endif
+colorscheme base16-google-light
 " }}}
 
 " Spaces & Tabs {{{
