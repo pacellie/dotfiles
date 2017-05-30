@@ -51,6 +51,7 @@ set fileencoding=utf-8
 " }}}
 
 " Colors {{{
+let base16colorspace=256                "Access colors present in 256 colorspace
 syntax enable			        		"enable syntax processing
 colorscheme base16-google-light
 " }}}
