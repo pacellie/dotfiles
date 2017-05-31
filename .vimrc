@@ -31,6 +31,7 @@ Plugin 'scrooloose/syntastic'               "sntastic syntax checker
 Plugin 'Valloric/YouCompleteMe'             "autocompletion
 Plugin 'fatih/vim-go'                       "vim golang support
 Plugin 'ervandew/supertab'                  "insert completions with TAB
+Plugin 'suan/vim-instant-markdown'          "markdown preview
 
 "END PLUGINS
 
