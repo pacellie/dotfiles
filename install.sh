@@ -5,7 +5,7 @@
 
 dir=~/.dotfiles
 olddir=~/.dotfiles_old
-files=".vimrc .gitconfig .zshrc"
+files=".tumx.conf .vimrc .gitconfig .zshrc"
 
 # create backup directory
 if [ ! -d $olddir ]; then

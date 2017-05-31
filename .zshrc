@@ -82,6 +82,9 @@ alias up4='cd ../../../..'
 alias up5='cd ../../../../..'
 alias up6='cd ../../../../../..'
 
+# tmux alias
+alias tmux='tmux -2'
+
 # update alias
 alias update='sudo apt-get update && sudo apt-get upgrade'
 
