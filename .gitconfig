@@ -12,3 +12,5 @@ lol = log --graph --all --abbrev-commit --decorate --format=format:'%C(bold blue
 
 [credential]
 	helper = cache
+[color]
+	ui = auto
