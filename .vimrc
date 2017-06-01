@@ -101,7 +101,7 @@ if has("gui_running")
     set guioptions-=T 				"hide toolbar
     set guioptions-=r 				"hide right scroll bar
     set guioptions-=L 				"hide left scroll bar
-    set guifont=Monospace\ 12		"set font-family and font-size
+    set guifont=Monospace\ 11		"set font-family and font-size
 endif
 " }}}
 
