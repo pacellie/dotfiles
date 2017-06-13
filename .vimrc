@@ -32,6 +32,10 @@ Plugin 'Valloric/YouCompleteMe'             "autocompletion
 Plugin 'fatih/vim-go'                       "vim golang support
 Plugin 'ervandew/supertab'                  "insert completions with TAB
 Plugin 'suan/vim-instant-markdown'          "markdown preview
+Plugin 'tmhedberg/SimpylFold'               "better python codefolding
+Plugin 'eagletmt/ghcmod-vim'                "haskell background checking
+Plugin 'eagletmt/neco-ghc'                  "haskell autocomplete
+Plugin 'Shougo/vimproc.vim'                 "haskell helper
 
 "END PLUGINS
 
@@ -47,8 +51,11 @@ filetype plugin indent on
 " General {{{
 set hidden                      "allow buffer change w/o saving
 set modelines=1                 "enable modelines
-set encoding=utf-8
+set encoding=utf-8              "fileencodeing
 set fileencoding=utf-8
+set fileformat=unix
+set timeoutlen=1000             "faster mode switching
+set ttimeoutlen=0
 " }}}
 
 " Colors {{{
@@ -60,9 +67,12 @@ colorscheme base16-google-light
 " Spaces & Tabs {{{
 set tabstop=4					"number of visual spaces per TAB
 set softtabstop=4				"number of spaces in TAB when editing
-set expandtab					"TABS are spaces
 set shiftwidth=4				"indenting is 4 spaces
+set textwidth=79                "text width
+set smarttab
+set expandtab					"TABS are spaces
 set autoindent					"turn indenting on
+set smartindent
 " }}}
 
 " UI Config {{{
@@ -84,6 +94,7 @@ set ignorecase					"ignore case when matching
 set foldenable					    "enable folding
 set foldlevelstart=0				"start files completely folded
 set foldmethod=indent				"fold based on indentation
+set foldlevel=99                    "max fold level
 " }}}
 
 " Movement {{{
@@ -115,7 +126,7 @@ autocmd BufWritePre * StripWhitespace
 " }}}
 
 " Leader Shortcuts {{{
-let mapleader="\<space>"        	    "set leader to ,
+let mapleader="\<space>"        	    "set leader
 nnoremap <leader>h :noh<CR>
 nnoremap <leader>n :NERDTree<CR>
 " }}}
@@ -123,6 +134,12 @@ nnoremap <leader>n :NERDTree<CR>
 " Opam Merlin Ocaml {{{
 let g:opamshare = substitute(system('opam config var share'), '\n$', '', '''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
+" }}}
+
+" YouCompleteMe{{{
+let g:ycm_autoclose_preview_window_after_completion=1           "go away autocomplete window when done
+let g:ycm_semantic_triggers = {'haskell' : ['.']}               "enable haskell autocomplete
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 " }}}
 
 " Syntastic {{{
@@ -136,7 +153,44 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_ocaml_checkers = ['merlin']
-let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_haskell_checkers = ['ghcmod', 'hdevtools', 'hlint']
+" }}}
+
+" Python {{{
+au BufNewFile,BufRead *.py          "PEP8
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+
+" python with virtual env
+py3 << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    sys.path.insert(0, project_base_dir)
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
+
+let python_highlight_all=1          "make it pretty
+" }}}
+
+" Haskell {{{
+au BufNewFile,BufRead *.hs          "Haskell indentation
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
+    \ set filetype=haskell
+
+" remapping for ghcmod
+map <silent> gmc :GhcModCheck<CR>
+map <silent> gmI :GhcModInfo<CR>
+map <silent> gml :GhcModLint<CR>
+map <silent> gmt :GhcModType<CR>
+map <silent> gmtc :GhcModTypeClear<CR>
+
 " }}}
 
 " vim:foldmethod=marker

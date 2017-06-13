@@ -85,15 +85,6 @@ alias up6='cd ../../../../../..'
 # tmux alias
 alias tmux='tmux -2'
 
-# update alias
-alias update='sudo apt-get update && sudo apt-get upgrade'
-
-# path alias
-alias path='echo $PATH'
-
-# eliminate strange error after closing gvim
-alias gvim="gvim 2>/dev/null"
-
 # eclipse - i really really love the eclipse installer ...
 alias eclipse='sudo /opt/eclipse/eclipse >&/dev/null'
 
@@ -131,6 +122,11 @@ export EDITOR='vim';
 
 # export golang path GOPATH
 export GOPATH=$HOME/Documents/Code/Golang
+
+# python virtualenvwrapper setup
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Documents/Code/Python
+source /usr/local/bin/virtualenvwrapper.sh
 
 # set the path with pathmunge from .bash_function
 pathmunge $HOME/.stack.snapshots/x86_64-linux/lts-6.12/7.10.3/bin
