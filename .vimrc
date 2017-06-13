@@ -36,6 +36,7 @@ Plugin 'tmhedberg/SimpylFold'               "better python codefolding
 Plugin 'eagletmt/ghcmod-vim'                "haskell background checking
 Plugin 'eagletmt/neco-ghc'                  "haskell autocomplete
 Plugin 'Shougo/vimproc.vim'                 "haskell helper
+Plugin 'godlygeek/tabular'                  "haskell lining up
 
 "END PLUGINS
 
@@ -191,6 +192,11 @@ map <silent> gml :GhcModLint<CR>
 map <silent> gmt :GhcModType<CR>
 map <silent> gmtc :GhcModTypeClear<CR>
 
+" lining up =, ::, ->
+let g:haskell_tabular=1
+vmap a= :Tabularize /=<CR>
+vmap a; :Tabularize /::<CR>
+vmap a- :Tabularize /-><CR>
 " }}}
 
 " vim:foldmethod=marker
