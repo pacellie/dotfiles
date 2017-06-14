@@ -37,7 +37,6 @@ Plugin 'eagletmt/ghcmod-vim'                "haskell background checking
 Plugin 'eagletmt/neco-ghc'                  "haskell autocomplete
 Plugin 'Shougo/vimproc.vim'                 "haskell helper
 Plugin 'godlygeek/tabular'                  "haskell lining up
-Plugin 'jalvesaq/nvim-r'                    "R plugin
 
 "END PLUGINS
 
