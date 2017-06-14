@@ -37,6 +37,7 @@ Plugin 'eagletmt/ghcmod-vim'                "haskell background checking
 Plugin 'eagletmt/neco-ghc'                  "haskell autocomplete
 Plugin 'Shougo/vimproc.vim'                 "haskell helper
 Plugin 'godlygeek/tabular'                  "haskell lining up
+Plugin 'jalvesaq/nvim-r'                    "R plugin
 
 "END PLUGINS
 
@@ -128,7 +129,6 @@ autocmd BufWritePre * StripWhitespace
 
 " Leader Shortcuts {{{
 let mapleader="\<space>"        	    "set leader
-nnoremap <leader>h :noh<CR>
 nnoremap <leader>n :NERDTree<CR>
 " }}}
 
