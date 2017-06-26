@@ -127,7 +127,7 @@ autocmd BufWritePre * StripWhitespace
 " }}}
 
 " Leader Shortcuts {{{
-let mapleader="\<space>"        	    "set leader
+let mapleader="\<cr>"        	    "set leader
 nnoremap <leader>n :NERDTree<CR>
 " }}}
 
@@ -138,8 +138,9 @@ execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
 " YouCompleteMe{{{
 let g:ycm_autoclose_preview_window_after_completion=1           "go away autocomplete window when done
-let g:ycm_semantic_triggers = {'haskell' : ['.']}               "enable haskell autocomplete
+let g:haskellmode_completion_ghc = 0
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+let g:ycm_semantic_triggers = {'haskell' : ['.']}               "enable haskell autocomplete
 " }}}
 
 " Syntastic {{{
@@ -171,7 +172,8 @@ if 'VIRTUAL_ENV' in os.environ:
     project_base_dir = os.environ['VIRTUAL_ENV']
     sys.path.insert(0, project_base_dir)
     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
+    exec(compile(open(activate_this, "rb").read(), activate_this, 'exec'), dict(__file__=activate_this))
+    #execfile(activate_this, dict(__file__=activate_this))
 EOF
 
 let python_highlight_all=1          "make it pretty
