@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# This script creates symlinks from the home directory
-# to any desired dotfiles in ~/dotfiles
+# This script creates symlinks from the home directory to any desired dotfiles in ~/.dotfiles
 
 dir=~/.dotfiles
 olddir=~/.dotfiles_old
@@ -18,7 +17,7 @@ for file in $files; do
 	if [ -e ~/$file ] && [ ! -L ~/$file ]; then
 		mv ~/$file $olddir
 	fi
-    	ln -sfnv $dir/$file ~/
+    ln -sfnv $dir/$file ~/
 done
 
 echo "done"

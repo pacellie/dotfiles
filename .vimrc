@@ -29,8 +29,9 @@ Plugin 'vim-airline/vim-airline-themes'	    "airline themes'
 Plugin 'chriskempson/base16-vim'            "colorschemes
 Plugin 'scrooloose/syntastic'               "sntastic syntax checker
 Plugin 'Valloric/YouCompleteMe'             "autocompletion
-Plugin 'fatih/vim-go'                       "vim golang support
 Plugin 'ervandew/supertab'                  "insert completions with TAB
+
+Plugin 'fatih/vim-go'                       "vim golang support
 Plugin 'suan/vim-instant-markdown'          "markdown preview
 Plugin 'tmhedberg/SimpylFold'               "better python codefolding
 Plugin 'eagletmt/ghcmod-vim'                "haskell background checking
@@ -41,8 +42,6 @@ Plugin 'godlygeek/tabular'                  "haskell lining up
 "END PLUGINS
 
 call vundle#end()
-filetype plugin indent on
-
 "enable filetype plugins vundle is finished
 filetype plugin indent on
 
@@ -63,6 +62,7 @@ set ttimeoutlen=0
 let base16colorspace=256                "Access colors present in 256 colorspace
 syntax enable			        		"enable syntax processing
 colorscheme base16-google-light
+highlight Search ctermfg=15
 " }}}
 
 " Spaces & Tabs {{{
@@ -105,6 +105,10 @@ nnoremap B ^
 nnoremap E $
 nnoremap $ <nop>
 nnoremap ^ <nop>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 " }}}
 
 " GVim {{{
@@ -136,10 +140,10 @@ let g:opamshare = substitute(system('opam config var share'), '\n$', '', '''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
 " }}}
 
-" YouCompleteMe{{{
+" YouCompleteMe {{{
+let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_server_python_interpreter = 'python'
 let g:ycm_autoclose_preview_window_after_completion=1           "go away autocomplete window when done
-let g:haskellmode_completion_ghc = 0
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 let g:ycm_semantic_triggers = {'haskell' : ['.']}               "enable haskell autocomplete
 " }}}
 
@@ -153,16 +157,20 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+nnoremap <C-n> :lnext<CR>
+nnoremap <C-p> :lprev<CR>
+nnoremap <C-c> :lclose<CR>
+
 let g:syntastic_ocaml_checkers = ['merlin']
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_haskell_checkers = ['ghcmod', 'hdevtools', 'hlint']
 " }}}
 
 " Python {{{
-au BufNewFile,BufRead *.py          "PEP8
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
+au BufNewFile,BufRead *.py set tabstop=4          "PEP8
+au BufNewFile,BufRead *.py set softtabstop=4
+au BufNewFile,BufRead *.py set shiftwidth=4
+au BufNewFile,BufRead *.py set filetype=python
 
 " python with virtual env
 py3 << EOF
@@ -180,11 +188,13 @@ let python_highlight_all=1          "make it pretty
 " }}}
 
 " Haskell {{{
-au BufNewFile,BufRead *.hs          "Haskell indentation
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
-    \ set filetype=haskell
+au BufNewFile,BufRead *.hs set tabstop=2
+au BufNewFile,BufRead *.hs set softtabstop=2
+au BufNewFile,BufRead *.hs set shiftwidth=2
+au BufNewFile,BufRead *.hs set filetype=haskell
+let g:haskellmode_completion_ghc = 0
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
 
 " remapping for ghcmod
 map <silent> gmc :GhcModCheck<CR>
