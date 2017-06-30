@@ -38,18 +38,18 @@ POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='214'
 #############################################################
 
 # open pdfs with okular without cluttering the terminal
-function pdf() {
+pdf() {
         okular "$@" >&/dev/null &
 }
 
 # open google-chrome browser with no arguments
 # or a variable number of html files
-function browser() {
+browser() {
         google-chrome "$@" >&/dev/null &
 }
 
 # don't add anything to the path if it is already there
-function pathmunge() {
+pathmunge() {
 	if ! echo $PATH | /bin/egrep -q "(^|:)$1($|:)" ; then
 		if [ "$2" = "after" ] ; then
 			PATH=$PATH:$1
@@ -57,6 +57,28 @@ function pathmunge() {
 			PATH=$1:$PATH
 		fi
 	fi
+}
+
+# extract archives
+ex () {
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xjf $1    ;;
+            *.tar.gz)    tar xzf $1    ;;
+            *.bz2)       bunzip2 $1    ;;
+            *.rar)       rar x $1      ;;
+            *.gz)        gunzip $1     ;;
+            *.tar)       tar xf $1     ;;
+            *.tbz2)      tar xjf $1    ;;
+            *.tgz)       tar xzf $1    ;;
+            *.zip)       unzip $1      ;;
+            *.Z)         uncompress $1 ;;
+            *.7z)        7z x $1       ;;
+            *)           echo "'$1' cannot be extracted via extract()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
 }
 
 #############################################################
@@ -91,7 +113,7 @@ alias tmux='tmux -2'
 # eclipse - i really really love the eclipse installer ...
 alias eclipse='sudo /opt/eclipse/eclipse >&/dev/null'
 
-# rstudio - throw away the garbaged
+# rstudio - throw away the garbage
 alias rstudio='rstudio >&/dev/null &'
 
 # hide netbeans and intellij error messages when launching from terminal
@@ -131,7 +153,7 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Documents/Code/Python
 source /usr/local/bin/virtualenvwrapper.sh
 
-# set the path with pathmunge from .bash_function
+# set the path with pathmunge
 pathmunge $HOME/.stack.snapshots/x86_64-linux/lts-6.12/7.10.3/bin
 pathmunge $HOME/.local/share/umake/bin
 pathmunge $HOME/bin
