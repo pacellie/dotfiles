@@ -34,6 +34,7 @@ Plugin 'eagletmt/ghcmod-vim'                "haskell background checking
 Plugin 'eagletmt/neco-ghc'                  "haskell autocomplete
 Plugin 'Shougo/vimproc.vim'                 "haskell helper
 Plugin 'godlygeek/tabular'                  "haskell lining up
+Plugin 'nbouscal/vim-stylish-haskell'       "format haskell files on save
 
 "END PLUGINS
 
