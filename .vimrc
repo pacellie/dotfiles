@@ -20,7 +20,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-surround'	    	    	"surround
 Plugin 'tpope/vim-commentary'               "commentary
 Plugin 'tpope/vim-repeat'                   "repeat surround and commentary cmds
-Plugin 'scrooloose/nerdtree'			    "nerdtree
 Plugin 'ntpeters/vim-better-whitespace'     "manage whitespace
 Plugin 'yggdroot/indentline'                "indent markers
 Plugin 'jiangmiao/auto-pairs'               "better ({[ ...
@@ -30,10 +29,7 @@ Plugin 'chriskempson/base16-vim'            "colorschemes
 Plugin 'scrooloose/syntastic'               "sntastic syntax checker
 Plugin 'Valloric/YouCompleteMe'             "autocompletion
 Plugin 'ervandew/supertab'                  "insert completions with TAB
-
-Plugin 'fatih/vim-go'                       "vim golang support
 Plugin 'suan/vim-instant-markdown'          "markdown preview
-Plugin 'tmhedberg/SimpylFold'               "better python codefolding
 Plugin 'eagletmt/ghcmod-vim'                "haskell background checking
 Plugin 'eagletmt/neco-ghc'                  "haskell autocomplete
 Plugin 'Shougo/vimproc.vim'                 "haskell helper
@@ -111,16 +107,6 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 " }}}
 
-" GVim {{{
-if has("gui_running")
-    set guioptions-=m				"hide menu bar
-    set guioptions-=T 				"hide toolbar
-    set guioptions-=r 				"hide right scroll bar
-    set guioptions-=L 				"hide left scroll bar
-    set guifont=Monospace\ 11		"set font-family and font-size
-endif
-" }}}
-
 " Airline Settings {{{
 set laststatus=2                            "show statusline all the time
 let g:airline#extendsions#tabline#enabled=1
@@ -193,8 +179,8 @@ au BufNewFile,BufRead *.hs set softtabstop=2
 au BufNewFile,BufRead *.hs set shiftwidth=2
 au BufNewFile,BufRead *.hs set filetype=haskell
 let g:haskellmode_completion_ghc = 0
+let g:necoghc_enable_detailed_browse = 1
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-
 
 " remapping for ghcmod
 map <silent> gmc :GhcModCheck<CR>
