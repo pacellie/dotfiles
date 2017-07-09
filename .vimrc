@@ -20,6 +20,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-surround'	    	    	"surround
 Plugin 'tpope/vim-commentary'               "commentary
 Plugin 'tpope/vim-repeat'                   "repeat surround and commentary cmds
+Plugin 'easymotion/vim-easymotion'          "jump around faster
 Plugin 'ntpeters/vim-better-whitespace'     "manage whitespace
 Plugin 'yggdroot/indentline'                "indent markers
 Plugin 'jiangmiao/auto-pairs'               "better ({[ ...
