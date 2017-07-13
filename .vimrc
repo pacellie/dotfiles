@@ -123,11 +123,6 @@ let mapleader="\<cr>"        	    "set leader
 nnoremap <leader>n :NERDTree<CR>
 " }}}
 
-" Opam Merlin Ocaml {{{
-let g:opamshare = substitute(system('opam config var share'), '\n$', '', '''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
-" }}}
-
 " YouCompleteMe {{{
 let g:ycm_python_binary_path = '/usr/bin/python3'
 let g:ycm_server_python_interpreter = 'python'
@@ -149,7 +144,6 @@ nnoremap <C-n> :lnext<CR>
 nnoremap <C-p> :lprev<CR>
 nnoremap <C-c> :lclose<CR>
 
-let g:syntastic_ocaml_checkers = ['merlin']
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_haskell_checkers = ['ghcmod', 'hdevtools', 'hlint']
 " }}}
