@@ -17,20 +17,31 @@ Plugin 'VundleVim/Vundle.vim'
 "to update the plugins run                 :PluginUpdate
 "to delete a plugin remove it here and run :PluginClean
 
+" Movement and Editing
 Plugin 'tpope/vim-surround'	    	    	"surround
 Plugin 'tpope/vim-commentary'               "commentary
 Plugin 'tpope/vim-repeat'                   "repeat surround and commentary cmds
 Plugin 'easymotion/vim-easymotion'          "jump around faster
-Plugin 'ntpeters/vim-better-whitespace'     "manage whitespace
 Plugin 'yggdroot/indentline'                "indent markers
 Plugin 'jiangmiao/auto-pairs'               "better ({[ ...
+Plugin 'ntpeters/vim-better-whitespace'     "manage whitespace
+Plugin 'ervandew/supertab'                  "insert completions with TAB
+
+" Styling
 Plugin 'vim-airline/vim-airline'    		"airline
 Plugin 'vim-airline/vim-airline-themes'	    "airline themes'
 Plugin 'chriskempson/base16-vim'            "colorschemes
+
+" Linting and Autocomplete
 Plugin 'scrooloose/syntastic'               "sntastic syntax checker
 Plugin 'Valloric/YouCompleteMe'             "autocompletion
-Plugin 'ervandew/supertab'                  "insert completions with TAB
+
+"Markdown and Latex
 Plugin 'suan/vim-instant-markdown'          "markdown preview
+Plugin 'ying17zi/vim-live-latex-preview'    "latex preview
+Plugin 'LaTeX-Box-Team/LaTeX-Box'           "ĺatex editing
+
+" Haskell
 Plugin 'eagletmt/ghcmod-vim'                "haskell background checking
 Plugin 'eagletmt/neco-ghc'                  "haskell autocomplete
 Plugin 'Shougo/vimproc.vim'                 "haskell helper
@@ -120,12 +131,9 @@ autocmd BufWritePre * StripWhitespace
 
 " Leader Shortcuts {{{
 let mapleader="\<cr>"        	    "set leader
-nnoremap <leader>n :NERDTree<CR>
 " }}}
 
 " YouCompleteMe {{{
-let g:ycm_python_binary_path = '/usr/bin/python3'
-let g:ycm_server_python_interpreter = 'python'
 let g:ycm_autoclose_preview_window_after_completion=1           "go away autocomplete window when done
 let g:ycm_semantic_triggers = {'haskell' : ['.']}               "enable haskell autocomplete
 " }}}
@@ -146,27 +154,6 @@ nnoremap <C-c> :lclose<CR>
 
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_haskell_checkers = ['ghcmod', 'hdevtools', 'hlint']
-" }}}
-
-" Python {{{
-au BufNewFile,BufRead *.py set tabstop=4          "PEP8
-au BufNewFile,BufRead *.py set softtabstop=4
-au BufNewFile,BufRead *.py set shiftwidth=4
-au BufNewFile,BufRead *.py set filetype=python
-
-" python with virtual env
-py3 << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    sys.path.insert(0, project_base_dir)
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    exec(compile(open(activate_this, "rb").read(), activate_this, 'exec'), dict(__file__=activate_this))
-    #execfile(activate_this, dict(__file__=activate_this))
-EOF
-
-let python_highlight_all=1          "make it pretty
 " }}}
 
 " Haskell {{{
@@ -190,6 +177,8 @@ let g:haskell_tabular=1
 vmap a= :Tabularize /=<CR>
 vmap a; :Tabularize /::<CR>
 vmap a- :Tabularize /-><CR>
+" }}}
+
 " }}}
 
 " vim:foldmethod=marker

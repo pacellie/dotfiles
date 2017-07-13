@@ -79,16 +79,29 @@ alias up6='cd ../../../../../..'
 # tmux alias
 alias tmux='tmux -2'
 
+# intellij
+alias idea='idea.sh &'
+
 #############################################################
 # PATHS
 #############################################################
 
 # export the default editor
-export EDITOR='vim';
+export EDITOR='vim'
+export PAGER='less'
+
+# python
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export WORKON_HOME=~/Envs
+export PROJECT_HOME=$HOME/Documents/Code/Python
+source /usr/local/bin/virtualenvwrapper.sh
 
 # set the path with pathmunge
 pathmunge $HOME/.local/share/umake/bin
 pathmunge $HOME/bin
 pathmunge $HOME/.local/bin
+pathmunge $HOME/.jetbrains/idea-IU-171.4694.70/bin
 pathmunge $HOME/Documents/Code/Bash
+pathmunge $HOME/.stack/programs/x86_64-linux/ghc-8.0.2/bin
+pathmunge $HOME/.vim/bundle/vim-live-latex-preview/bin
 export PATH
