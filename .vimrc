@@ -101,10 +101,10 @@ set ignorecase					"ignore case when matching
 " }}}
 
 " Folding {{{
-set foldenable					    "enable folding
-set foldlevelstart=0				"start files completely folded
-set foldmethod=indent				"fold based on indentation
-set foldlevel=99                    "max fold level
+set foldenable				    "enable folding
+set foldlevelstart=0			"start files completely folded
+set foldmethod=indent			"fold based on indentation
+set foldlevel=99                "max fold level
 " }}}
 
 " Movement {{{
@@ -121,7 +121,7 @@ nnoremap <C-H> <C-W><C-H>
 " }}}
 
 " Airline Settings {{{
-set laststatus=2                            "show statusline all the time
+set laststatus=2                "show statusline all the time
 let g:airline#extendsions#tabline#enabled=1
 " }}}
 
@@ -130,7 +130,7 @@ autocmd BufWritePre * StripWhitespace
 " }}}
 
 " Leader Shortcuts {{{
-let mapleader="\<cr>"        	    "set leader
+let mapleader="\<cr>"    	    "set leader
 " }}}
 
 " YouCompleteMe {{{
@@ -152,7 +152,6 @@ nnoremap <C-n> :lnext<CR>
 nnoremap <C-p> :lprev<CR>
 nnoremap <C-c> :lclose<CR>
 
-let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_haskell_checkers = ['ghcmod', 'hdevtools', 'hlint']
 " }}}
 

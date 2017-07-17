@@ -3,13 +3,11 @@ export ZSH=$HOME/.oh-my-zsh
 
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
-
 COMPLETION_WAITING_DOTS="true"
-
 plugins=(cabal, virtualenvwrapper, git)
-
 source $ZSH/oh-my-zsh.sh
 
+# Base 16 Theme
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1"  ] && [ -s $BASE16_SHELL/profile_helper.sh  ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
