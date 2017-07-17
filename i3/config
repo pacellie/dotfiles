@@ -18,22 +18,22 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 334 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlgb "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 14"
 
 # change focus
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # move focused window
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+a split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+b split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -49,22 +49,21 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# focus the parent container
-bindsym $mod+a focus parent
-
 # workspace aliases
-set $workspace1 "1: Terminal  "
-set $workspace2 "2: Browser  "
-set $workspace3 "3: Reading  "
-set $workspace4 "4: Editor  "
+set $workspace1 "1: Term"
+set $workspace2 "2: Code"
+set $workspace3 "3: Browse"
+set $workspace4 "4: Read"
+set $workspace5 "5: Listen"
+set $workspace6 "6: Code More"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
 bindsym $mod+4 workspace $workspace4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
@@ -75,8 +74,8 @@ bindsym $mod+Shift+1 move container to workspace $workspace1
 bindsym $mod+Shift+2 move container to workspace $workspace2
 bindsym $mod+Shift+3 move container to workspace $workspace3
 bindsym $mod+Shift+4 move container to workspace $workspace4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
@@ -157,6 +156,8 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-exec_always feh --bg-scale ~/Pictures/Wallpaper/Yosemite-Color-Block.png
+exec_always feh --bg-scale ~/Pictures/Wallpaper/autumn.jpg
 exec_always xrandr --output HDMI-1 --off --output DP-1 --off --output eDP-1 --primary --mode 1366x768 --pos 0x0 --rotate normal --output HDMI-2 --off
 exec compton -f
+exec gnome-terminal --hide-menubar --window-with-profile=Custom
+exec gnome-terminal --hide-menubar --window-with-profile=Custom
