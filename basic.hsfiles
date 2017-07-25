@@ -40,13 +40,13 @@ import Distribution.Simple
 main = defaultMain
 
 {-# START_FILE test/Test.hs #-}
+module Main where
+
 main :: IO ()
 main = putStrLn "Test suite not yet implemented"
 
 {-# START_FILE src/Lib.hs #-}
-module Lib
-    ( hello
-    ) where
+module Lib where
 
 hello :: IO ()
 hello = putStrLn "Hello Haskell!"

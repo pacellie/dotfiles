@@ -38,8 +38,6 @@ Plugin 'Valloric/YouCompleteMe'             "autocompletion
 
 "Markdown and Latex
 Plugin 'suan/vim-instant-markdown'          "markdown preview
-Plugin 'ying17zi/vim-live-latex-preview'    "latex preview
-Plugin 'LaTeX-Box-Team/LaTeX-Box'           "ĺatex editing
 
 " Haskell
 Plugin 'eagletmt/ghcmod-vim'                "haskell background checking
@@ -102,7 +100,7 @@ set ignorecase					"ignore case when matching
 
 " Folding {{{
 set foldenable				    "enable folding
-set foldlevelstart=0			"start files completely folded
+set foldlevelstart=99			"start files completely unfolded
 set foldmethod=indent			"fold based on indentation
 set foldlevel=99                "max fold level
 " }}}

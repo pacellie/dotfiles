@@ -1,8 +1,6 @@
-# http://docs.haskellstack.org/en/stable/yaml_configuration/
 templates:
   params:
     author-name: Martin Rau
     author-email: mrtn.rau@googlemail.com
-    copyright:
     category: Unclassified
     github-username: mrtnrau
