@@ -26,6 +26,8 @@ Plugin 'yggdroot/indentline'                "indent markers
 Plugin 'jiangmiao/auto-pairs'               "better ({[ ...
 Plugin 'ntpeters/vim-better-whitespace'     "manage whitespace
 Plugin 'ervandew/supertab'                  "insert completions with TAB
+Plugin 'majutsushi/tagbar'                  "tagbar
+Plugin 'kien/ctrlp.vim'                     "fuzzy file search
 
 " Styling
 Plugin 'vim-airline/vim-airline'    		"airline
@@ -38,6 +40,7 @@ Plugin 'Valloric/YouCompleteMe'             "autocompletion
 
 "Markdown and Latex
 Plugin 'suan/vim-instant-markdown'          "markdown preview
+Plugin 'alxhnr/latex_preview'               "latex preview
 
 " Haskell
 Plugin 'eagletmt/ghcmod-vim'                "haskell background checking
@@ -131,6 +134,19 @@ autocmd BufWritePre * StripWhitespace
 let mapleader="\<cr>"    	    "set leader
 " }}}
 
+" Tagbar {{{
+nmap <F8> :TagbarToggle<CR>
+" }}}
+
+" CtrlP {{{
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+" }}}
+
+" Latex {{{
+nmap <F7> :LatexPreview<CR>
+" }}}
+
 " YouCompleteMe {{{
 let g:ycm_autoclose_preview_window_after_completion=1           "go away autocomplete window when done
 let g:ycm_semantic_triggers = {'haskell' : ['.']}               "enable haskell autocomplete
@@ -174,8 +190,39 @@ let g:haskell_tabular=1
 vmap a= :Tabularize /=<CR>
 vmap a; :Tabularize /::<CR>
 vmap a- :Tabularize /-><CR>
-" }}}
 
+" hasktags for tagbar
+let g:tagbar_type_haskell = {
+    \ 'ctagsbin'  : 'hasktags',
+    \ 'ctagsargs' : '-x -c -o-',
+    \ 'kinds'     : [
+        \  'm:modules:0:1',
+        \  'd:data: 0:1',
+        \  'd_gadt: data gadt:0:1',
+        \  't:type names:0:1',
+        \  'nt:new types:0:1',
+        \  'c:classes:0:1',
+        \  'cons:constructors:1:1',
+        \  'c_gadt:constructor gadt:1:1',
+        \  'c_a:constructor accessors:1:1',
+        \  'ft:function types:1:1',
+        \  'fi:function implementations:0:1',
+        \  'o:others:0:1'
+    \ ],
+    \ 'sro'        : '.',
+    \ 'kind2scope' : {
+        \ 'm' : 'module',
+        \ 'c' : 'class',
+        \ 'd' : 'data',
+        \ 't' : 'type'
+    \ },
+        \ 'scope2kind' : {
+        \ 'module' : 'm',
+        \ 'class'  : 'c',
+        \ 'data'   : 'd',
+        \ 'type'   : 't'
+    \ }
+\ }
 " }}}
 
 " vim:foldmethod=marker
