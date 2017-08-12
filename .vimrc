@@ -36,7 +36,7 @@ Plugin 'chriskempson/base16-vim'            "colorschemes
 
 " Linting and Autocomplete
 Plugin 'scrooloose/syntastic'               "sntastic syntax checker
-Plugin 'Valloric/YouCompleteMe'             "autocompletion
+Plugin 'valloric/youcompleteme'             "autocomplete
 
 "Markdown and Latex
 Plugin 'suan/vim-instant-markdown'          "markdown preview
@@ -59,13 +59,15 @@ filetype plugin indent on
 " }}}
 
 " General {{{
-set hidden                      "allow buffer change w/o saving
-set modelines=1                 "enable modelines
-set encoding=utf-8              "fileencodeing
+autocmd! bufwritepost .vimrc source %   "reload .vimrc on save
+set hidden                              "allow buffer change w/o saving
+set modelines=1                         "enable modelines
+set encoding=utf-8                      "fileencodeing
 set fileencoding=utf-8
 set fileformat=unix
-set timeoutlen=1000             "faster mode switching
+set timeoutlen=1000                     "faster mode switching
 set ttimeoutlen=0
+set clipboard=unnamed                   "enable easier copy paste
 " }}}
 
 " Colors {{{
@@ -108,7 +110,7 @@ set foldmethod=indent			"fold based on indentation
 set foldlevel=99                "max fold level
 " }}}
 
-" Movement {{{
+" Mappings {{{
 nnoremap j gj
 nnoremap k gk
 nnoremap B ^
@@ -119,6 +121,10 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+vnoremap gs :sort<CR>
+vnoremap < <gv
+vnoremap > >gv
 " }}}
 
 " Airline Settings {{{
@@ -147,11 +153,6 @@ let g:ctrlp_cmd = 'CtrlP'
 nmap <F7> :LatexPreview<CR>
 " }}}
 
-" YouCompleteMe {{{
-let g:ycm_autoclose_preview_window_after_completion=1           "go away autocomplete window when done
-let g:ycm_semantic_triggers = {'haskell' : ['.']}               "enable haskell autocomplete
-" }}}
-
 " Syntastic {{{
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -167,6 +168,7 @@ nnoremap <C-p> :lprev<CR>
 nnoremap <C-c> :lclose<CR>
 
 let g:syntastic_haskell_checkers = ['ghcmod', 'hdevtools', 'hlint']
+let g:syntastic_python_checkers = ['pylint', 'pep8', 'flake8']
 " }}}
 
 " Haskell {{{
@@ -174,9 +176,11 @@ au BufNewFile,BufRead *.hs set tabstop=2
 au BufNewFile,BufRead *.hs set softtabstop=2
 au BufNewFile,BufRead *.hs set shiftwidth=2
 au BufNewFile,BufRead *.hs set filetype=haskell
+
+" autocomplete
 let g:haskellmode_completion_ghc = 0
-let g:necoghc_enable_detailed_browse = 1
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
 " remapping for ghcmod
 map <silent> gmc :GhcModCheck<CR>
@@ -223,6 +227,12 @@ let g:tagbar_type_haskell = {
         \ 'type'   : 't'
     \ }
 \ }
+" }}}
+
+" Python {{{
+map <silent> gpl :SyntasticCheck pylint<CR>
+map <silent> gp8 :SyntasticCheck pep8<CR>
+map <silent> gf8 :SyntasticCheck flake8<CR>
 " }}}
 
 " vim:foldmethod=marker
