@@ -180,6 +180,7 @@ au BufNewFile,BufRead *.hs set filetype=haskell
 " autocomplete
 let g:haskellmode_completion_ghc = 0
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+let g:necoghc_use_stack = 1
 let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
 " remapping for ghcmod
