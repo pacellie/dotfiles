@@ -151,6 +151,7 @@ let g:ctrlp_cmd = 'CtrlP'
 
 " Latex {{{
 nmap <F7> :LatexPreview<CR>
+let g:tex_conceal = ''
 " }}}
 
 " Syntastic {{{
