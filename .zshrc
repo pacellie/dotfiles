@@ -11,6 +11,11 @@ source $ZSH/oh-my-zsh.sh
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1"  ] && [ -s $BASE16_SHELL/profile_helper.sh  ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
+# tmuxp completion
+autoload bashcompinit
+bashcompinit
+eval "$(_TMUXP_COMPLETE=source tmuxp)"
+
 #############################################################
 # FUNCTIONS
 #############################################################
@@ -83,6 +88,9 @@ alias idea='idea.sh &'
 #############################################################
 # PATHS
 #############################################################
+
+# disable auto title
+export DISABLE_AUTO_TITLE='true'
 
 # export the default editor
 export EDITOR='vim'
