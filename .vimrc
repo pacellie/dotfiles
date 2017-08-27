@@ -26,7 +26,6 @@ Plugin 'yggdroot/indentline'                "indent markers
 Plugin 'jiangmiao/auto-pairs'               "better ({[ ...
 Plugin 'ntpeters/vim-better-whitespace'     "manage whitespace
 Plugin 'ervandew/supertab'                  "insert completions with TAB
-Plugin 'majutsushi/tagbar'                  "tagbar
 Plugin 'kien/ctrlp.vim'                     "fuzzy file search
 
 " Styling
@@ -48,6 +47,16 @@ Plugin 'eagletmt/neco-ghc'                  "haskell autocomplete
 Plugin 'Shougo/vimproc.vim'                 "haskell helper
 Plugin 'godlygeek/tabular'                  "haskell lining up
 Plugin 'nbouscal/vim-stylish-haskell'       "format haskell files on save
+
+" Javascript, Html, Css
+Plugin 'mattn/emmet-vim'                    "emmet
+Plugin 'othree/html5.vim'                   "html5
+Plugin 'hail2u/vim-css3-syntax'             "css3
+Plugin 'elzr/vim-json'                      "json
+Plugin 'pangloss/vim-Javascript'            "javascript
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'beautify-web/js-beautify'
+Plugin 'marijnh/tern_for_vim'
 
 "END PLUGINS
 
@@ -140,16 +149,16 @@ autocmd BufWritePre * StripWhitespace
 let mapleader="\<cr>"    	    "set leader
 " }}}
 
-" Tagbar {{{
-nmap <F8> :TagbarToggle<CR>
-" }}}
-
 " CtrlP {{{
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 " }}}
 
 " Latex {{{
+au BufNewFile,BufRead *.tex set autoindent&
+au BufNewFile,BufRead *.tex set cindent&
+au BufNewFile,BufRead *.tex set smartindent&
+au BufNewFile,BufRead *.tex set indentexpr&
 nmap <F7> :LatexPreview<CR>
 let g:tex_conceal = ''
 " }}}
@@ -161,15 +170,19 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:Syntastic_aggregate_errors = 1
+let g:Syntastic_aggregate_errors = 1
 
 nnoremap <C-n> :lnext<CR>
 nnoremap <C-p> :lprev<CR>
 nnoremap <C-c> :lclose<CR>
+nnoremap <C-t> :SyntasticToggleMode<CR>
 
 let g:syntastic_haskell_checkers = ['ghcmod', 'hdevtools', 'hlint']
-let g:syntastic_python_checkers = ['pylint', 'pep8', 'flake8']
+let g:syntastic_python_checkers = ['pylint', 'flake8', 'pep8']
+let g:syntastic_javascript_checkers = ['jshint', 'jslint', 'eslint']
 " }}}
 
 " Haskell {{{
@@ -196,45 +209,26 @@ let g:haskell_tabular=1
 vmap a= :Tabularize /=<CR>
 vmap a; :Tabularize /::<CR>
 vmap a- :Tabularize /-><CR>
-
-" hasktags for tagbar
-let g:tagbar_type_haskell = {
-    \ 'ctagsbin'  : 'hasktags',
-    \ 'ctagsargs' : '-x -c -o-',
-    \ 'kinds'     : [
-        \  'm:modules:0:1',
-        \  'd:data: 0:1',
-        \  'd_gadt: data gadt:0:1',
-        \  't:type names:0:1',
-        \  'nt:new types:0:1',
-        \  'c:classes:0:1',
-        \  'cons:constructors:1:1',
-        \  'c_gadt:constructor gadt:1:1',
-        \  'c_a:constructor accessors:1:1',
-        \  'ft:function types:1:1',
-        \  'fi:function implementations:0:1',
-        \  'o:others:0:1'
-    \ ],
-    \ 'sro'        : '.',
-    \ 'kind2scope' : {
-        \ 'm' : 'module',
-        \ 'c' : 'class',
-        \ 'd' : 'data',
-        \ 't' : 'type'
-    \ },
-        \ 'scope2kind' : {
-        \ 'module' : 'm',
-        \ 'class'  : 'c',
-        \ 'data'   : 'd',
-        \ 'type'   : 't'
-    \ }
-\ }
 " }}}
 
 " Python {{{
 map <silent> gpl :SyntasticCheck pylint<CR>
 map <silent> gp8 :SyntasticCheck pep8<CR>
 map <silent> gf8 :SyntasticCheck flake8<CR>
+" }}}
+
+" Javascript, Html, Css {{{
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+
+au BufNewFile,BufRead *.json set filetype=json
+
+map <silent> gtd :TernDef<CR>
+map <silent> gtD :TernDoc<CR>
+map <silent> gtt :TernType<CR>
+map <silent> gtr :TernRefs<CR>
+map <silent> gtR :TernRename<CR>
+
 " }}}
 
 " vim:foldmethod=marker
