@@ -48,15 +48,13 @@ Plugin 'Shougo/vimproc.vim'                 "haskell helper
 Plugin 'godlygeek/tabular'                  "haskell lining up
 Plugin 'nbouscal/vim-stylish-haskell'       "format haskell files on save
 
-" Javascript, Html, Css
+" " Javascript, Html, Css
 Plugin 'mattn/emmet-vim'                    "emmet
 Plugin 'othree/html5.vim'                   "html5
 Plugin 'hail2u/vim-css3-syntax'             "css3
 Plugin 'elzr/vim-json'                      "json
 Plugin 'pangloss/vim-Javascript'            "javascript
 Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'beautify-web/js-beautify'
-Plugin 'marijnh/tern_for_vim'
 
 "END PLUGINS
 
@@ -222,13 +220,6 @@ let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
 au BufNewFile,BufRead *.json set filetype=json
-
-map <silent> gtd :TernDef<CR>
-map <silent> gtD :TernDoc<CR>
-map <silent> gtt :TernType<CR>
-map <silent> gtr :TernRefs<CR>
-map <silent> gtR :TernRename<CR>
-
 " }}}
 
 " vim:foldmethod=marker

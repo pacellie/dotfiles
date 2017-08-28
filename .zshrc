@@ -3,7 +3,7 @@ export ZSH=$HOME/.oh-my-zsh
 
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
-COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="false"
 plugins=(cabal, virtualenvwrapper, git)
 source $ZSH/oh-my-zsh.sh
 
