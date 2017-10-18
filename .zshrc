@@ -122,4 +122,5 @@ pathmunge $HOME/.jetbrains/idea-IU-171.4694.70/bin
 pathmunge $HOME/Documents/Code/Bash
 pathmunge $HOME/.stack/programs/x86_64-linux/ghc-8.0.2/bin
 pathmunge $HOME/Envs
+pathmunge $HOME/.conscript/bin
 export PATH

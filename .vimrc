@@ -22,7 +22,6 @@ Plugin 'tpope/vim-surround'	    	    	"surround
 Plugin 'tpope/vim-commentary'               "commentary
 Plugin 'tpope/vim-repeat'                   "repeat surround and commentary cmds
 Plugin 'easymotion/vim-easymotion'          "jump around faster
-Plugin 'yggdroot/indentline'                "indent markers
 Plugin 'jiangmiao/auto-pairs'               "better ({[ ...
 Plugin 'ntpeters/vim-better-whitespace'     "manage whitespace
 Plugin 'ervandew/supertab'                  "insert completions with TAB
@@ -47,6 +46,9 @@ Plugin 'eagletmt/neco-ghc'                  "haskell autocomplete
 Plugin 'Shougo/vimproc.vim'                 "haskell helper
 Plugin 'godlygeek/tabular'                  "haskell lining up
 Plugin 'nbouscal/vim-stylish-haskell'       "format haskell files on save
+
+" Scala
+Plugin 'derekwyatt/vim-scala'
 
 " " Javascript, Html, Css
 Plugin 'mattn/emmet-vim'                    "emmet
@@ -222,4 +224,8 @@ autocmd FileType html,css EmmetInstall
 au BufNewFile,BufRead *.json set filetype=json
 " }}}
 
+" Scala {{{
+autocmd BufRead,BufNewFile *.scala set filetype=scala
+let g:scala_scaladoc_indent = 1
+" }}}
 " vim:foldmethod=marker
