@@ -191,6 +191,23 @@ let g:syntastic_ocaml_checkers = ['merlin']
 let g:syntastic_elixir_checkers = ['elixir']
 " }}}
 
+" YouCompleteMe {{{
+let g:ycm_semantic_triggers =  {
+  \   'c' : ['->', '.'],
+  \   'objc' : ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
+  \             're!\[.*\]\s'],
+  \   'ocaml' : ['.', '#'],
+  \   'cpp,objcpp' : ['->', '.', '::'],
+  \   'perl' : ['->'],
+  \   'php' : ['->', '::'],
+  \   'cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go' : ['.'],
+  \   'ruby' : ['.', '::'],
+  \   'lua' : ['.', ':'],
+  \   'erlang' : [':'],
+  \   'haskll' : ['.'],
+  \ }
+" }}}
+
 " Haskell {{{
 au BufNewFile,BufRead *.hs set tabstop=2
 au BufNewFile,BufRead *.hs set softtabstop=2
@@ -201,7 +218,6 @@ au BufNewFile,BufRead *.hs set filetype=haskell
 let g:haskellmode_completion_ghc = 0
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 let g:necoghc_use_stack = 1
-let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
 " remapping for ghcmod
 map <silent> gmc :GhcModCheck<CR>
@@ -233,6 +249,11 @@ au BufNewFile,BufRead *.json set filetype=json
 " Scala {{{
 autocmd BufRead,BufNewFile *.scala set filetype=scala
 let g:scala_scaladoc_indent = 1
+" }}}
+
+" Elixir {{{
+autocmd BufRead,BufNewFile *.ex set filetype=elixir
+autocmd BufRead,BufNewFile *.exs set filetype=elixir
 " }}}
 
 " Ocaml {{{
