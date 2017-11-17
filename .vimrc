@@ -50,6 +50,10 @@ Plugin 'nbouscal/vim-stylish-haskell'       "format haskell files on save
 " Scala
 Plugin 'derekwyatt/vim-scala'
 
+" Elixir
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'slashmili/alchemist.vim'
+
 " " Javascript, Html, Css
 Plugin 'mattn/emmet-vim'                    "emmet
 Plugin 'othree/html5.vim'                   "html5
@@ -183,6 +187,8 @@ nnoremap <C-t> :SyntasticToggleMode<CR>
 let g:syntastic_haskell_checkers = ['ghcmod', 'hdevtools', 'hlint']
 let g:syntastic_python_checkers = ['pylint', 'flake8', 'pep8']
 let g:syntastic_javascript_checkers = ['jshint', 'jslint', 'eslint']
+let g:syntastic_ocaml_checkers = ['merlin']
+let g:syntastic_elixir_checkers = ['elixir']
 " }}}
 
 " Haskell {{{
@@ -227,5 +233,16 @@ au BufNewFile,BufRead *.json set filetype=json
 " Scala {{{
 autocmd BufRead,BufNewFile *.scala set filetype=scala
 let g:scala_scaladoc_indent = 1
+" }}}
+
+" Ocaml {{{
+au FileType ocaml call SuperTabSetDefaultCompletionType("<c-x><c-o>")
+let g:opamshare = substitute(system('opam config var share'), '\n', '', '''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+
+au BufNewFile,BufRead *.ml set tabstop=2
+au BufNewFile,BufRead *.ml set softtabstop=2
+au BufNewFile,BufRead *.ml set shiftwidth=2
+au BufNewFile,BufRead *.ml set filetype=ocaml
 " }}}
 " vim:foldmethod=marker

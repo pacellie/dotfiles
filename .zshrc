@@ -124,3 +124,6 @@ pathmunge $HOME/.stack/programs/x86_64-linux/ghc-8.0.2/bin
 pathmunge $HOME/Envs
 pathmunge $HOME/.conscript/bin
 export PATH
+
+# OPAM configuration
+. /home/martin/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
