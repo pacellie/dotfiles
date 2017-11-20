@@ -260,10 +260,46 @@ autocmd BufRead,BufNewFile *.exs set filetype=elixir
 au FileType ocaml call SuperTabSetDefaultCompletionType("<c-x><c-o>")
 let g:opamshare = substitute(system('opam config var share'), '\n', '', '''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
+set rtp^="home/martin/.opam/4.05.0/share/ocp-indent/vim"
 
 au BufNewFile,BufRead *.ml set tabstop=2
 au BufNewFile,BufRead *.ml set softtabstop=2
 au BufNewFile,BufRead *.ml set shiftwidth=2
 au BufNewFile,BufRead *.ml set filetype=ocaml
+
+let s:opam_share_dir = system("opam config var share")
+let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
+
+let s:opam_configuration = {}
+
+function! OpamConfOcpIndent()
+  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
+endfunction
+let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
+
+function! OpamConfOcpIndex()
+  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
+endfunction
+let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
+
+function! OpamConfMerlin()
+  let l:dir = s:opam_share_dir . "/merlin/vim"
+  execute "set rtp+=" . l:dir
+endfunction
+let s:opam_configuration['merlin'] = function('OpamConfMerlin')
+
+let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
+let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
+let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
+for tool in s:opam_packages
+  " Respect package order (merlin should be after ocp-index)
+  if count(s:opam_available_tools, tool) > 0
+    call s:opam_configuration[tool]()
+  endif
+endfor
+
+if count(s:opam_available_tools,"ocp-indent") == 0
+  source "/home/martin/.opam/4.05.0/share/vim/syntax/ocp-indent.vim"
+endif
 " }}}
 " vim:foldmethod=marker

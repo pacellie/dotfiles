@@ -102,18 +102,6 @@ export WORKON_HOME=~/Envs
 export PROJECT_HOME=$HOME/Documents/Code/Python
 source /usr/local/bin/virtualenvwrapper.sh
 
-# set up faster navigation
-export WSB=$HOME/Documents/Code/Bash
-export WSG=$HOME/Documents/Code/Golang
-export WSH=$HOME/Documents/Code/Haskell
-export WSJ=$HOME/Documents/Code/Java
-export WSL=$HOME/Documents/Code/Latex
-export WSM=$HOME/Documents/Code/Markdown
-export WSP=$HOME/Documents/Code/Python
-export WSR=$HOME/Documents/Code/R
-export WSW=$HOME/Documents/Code/Web
-
-
 # set the path with pathmunge
 pathmunge $HOME/.local/share/umake/bin
 pathmunge $HOME/bin
