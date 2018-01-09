@@ -10,4 +10,6 @@ let () =
 #thread;;
 #require "core.top";;
 #require "core.syntax";;
+#require "batteries";;
+
 

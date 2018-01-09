@@ -21,7 +21,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-surround'	    	    	"surround
 Plugin 'tpope/vim-commentary'               "commentary
 Plugin 'tpope/vim-repeat'                   "repeat surround and commentary cmds
-Plugin 'easymotion/vim-easymotion'          "jump around faster
 Plugin 'jiangmiao/auto-pairs'               "better ({[ ...
 Plugin 'ntpeters/vim-better-whitespace'     "manage whitespace
 Plugin 'ervandew/supertab'                  "insert completions with TAB
@@ -54,13 +53,8 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'slashmili/alchemist.vim'
 
-" " Javascript, Html, Css
-Plugin 'mattn/emmet-vim'                    "emmet
-Plugin 'othree/html5.vim'                   "html5
-Plugin 'hail2u/vim-css3-syntax'             "css3
-Plugin 'elzr/vim-json'                      "json
-Plugin 'pangloss/vim-Javascript'            "javascript
-Plugin 'othree/javascript-libraries-syntax.vim'
+" Prolog
+Plugin 'adimit/prolog.vim'
 
 "END PLUGINS
 
@@ -91,10 +85,10 @@ highlight Search ctermfg=15
 " }}}
 
 " Spaces & Tabs {{{
-set tabstop=4					"number of visual spaces per TAB
-set softtabstop=4				"number of spaces in TAB when editing
-set shiftwidth=4				"indenting is 4 spaces
-set textwidth=79                "text width
+set tabstop=2					"number of visual spaces per TAB
+set softtabstop=2				"number of spaces in TAB when editing
+set shiftwidth=2				"indenting is 4 spaces
+set textwidth=100               "text width
 set smarttab
 set expandtab					"TABS are spaces
 set autoindent					"turn indenting on
@@ -181,14 +175,15 @@ let g:Syntastic_aggregate_errors = 1
 
 nnoremap <C-n> :lnext<CR>
 nnoremap <C-p> :lprev<CR>
+nnoremap <C-e> :SyntasticCheck<CR>
 nnoremap <C-c> :lclose<CR>
 nnoremap <C-t> :SyntasticToggleMode<CR>
 
 let g:syntastic_haskell_checkers = ['ghcmod', 'hdevtools', 'hlint']
 let g:syntastic_python_checkers = ['pylint', 'flake8', 'pep8']
-let g:syntastic_javascript_checkers = ['jshint', 'jslint', 'eslint']
 let g:syntastic_ocaml_checkers = ['merlin']
 let g:syntastic_elixir_checkers = ['elixir']
+let g:syntastic_enable_elixir_checker = 1
 " }}}
 
 " YouCompleteMe {{{
@@ -239,13 +234,6 @@ map <silent> gp8 :SyntasticCheck pep8<CR>
 map <silent> gf8 :SyntasticCheck flake8<CR>
 " }}}
 
-" Javascript, Html, Css {{{
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
-
-au BufNewFile,BufRead *.json set filetype=json
-" }}}
-
 " Scala {{{
 autocmd BufRead,BufNewFile *.scala set filetype=scala
 let g:scala_scaladoc_indent = 1
@@ -256,11 +244,15 @@ autocmd BufRead,BufNewFile *.ex set filetype=elixir
 autocmd BufRead,BufNewFile *.exs set filetype=elixir
 " }}}
 
+" Prolog {{{
+autocmd BufRead,BufNewFile *.pl set filetype=prolog
+" }}}
+
 " Ocaml {{{
 au FileType ocaml call SuperTabSetDefaultCompletionType("<c-x><c-o>")
 let g:opamshare = substitute(system('opam config var share'), '\n', '', '''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
-set rtp^="home/martin/.opam/4.05.0/share/ocp-indent/vim"
+set rtp^="home/martin/.opam/4.06.0/share/ocp-indent/vim"
 
 au BufNewFile,BufRead *.ml set tabstop=2
 au BufNewFile,BufRead *.ml set softtabstop=2
@@ -299,7 +291,7 @@ for tool in s:opam_packages
 endfor
 
 if count(s:opam_available_tools,"ocp-indent") == 0
-  source "/home/martin/.opam/4.05.0/share/vim/syntax/ocp-indent.vim"
+  source "/home/martin/.opam/4.06.0/share/vim/syntax/ocp-indent.vim"
 endif
 " }}}
 " vim:foldmethod=marker
