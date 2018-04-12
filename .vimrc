@@ -49,13 +49,6 @@ Plugin 'nbouscal/vim-stylish-haskell'       "format haskell files on save
 " Scala
 Plugin 'derekwyatt/vim-scala'
 
-" Elixir
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'slashmili/alchemist.vim'
-
-" Prolog
-Plugin 'adimit/prolog.vim'
-
 "END PLUGINS
 
 call vundle#end()
@@ -78,43 +71,43 @@ set clipboard=unnamed                   "enable easier copy paste
 " }}}
 
 " Colors {{{
-let base16colorspace=256                "Access colors present in 256 colorspace
-syntax enable			        		"enable syntax processing
+let base16colorspace=256         "Access colors present in 256 colorspace
+syntax enable			        		   "enable syntax processing
 colorscheme base16-google-light
 highlight Search ctermfg=15
 " }}}
 
 " Spaces & Tabs {{{
 set tabstop=2					"number of visual spaces per TAB
-set softtabstop=2				"number of spaces in TAB when editing
-set shiftwidth=2				"indenting is 4 spaces
-set textwidth=100               "text width
+set softtabstop=2			"number of spaces in TAB when editing
+set shiftwidth=2			"indenting is 4 spaces
+set textwidth=100     "text width
 set smarttab
 set expandtab					"TABS are spaces
-set autoindent					"turn indenting on
+set autoindent				"turn indenting on
 set smartindent
 " }}}
 
 " UI Config {{{
-set number				    	"show line numbers
-set relativenumber				"show relative line numbers
-set wildmenu					"visual autocomplete for command menu
-set showcmd					    "what command am i typing
-set showmatch					"show matching brackets while hover
-set scrolloff=4                 "keep at least 4 lines below cursor
+set number				   "show line numbers
+set relativenumber	 "show relative line numbers
+set wildmenu				 "visual autocomplete for command menu
+set showcmd					 "what command am i typing
+set showmatch				 "show matching brackets while hover
+set scrolloff=4      "keep at least 4 lines below cursor
 " }}}
 
 " Searching {{{
 set incsearch					"search as characters are entered
 set hlsearch					"highlight matches
-set ignorecase					"ignore case when matching
+set ignorecase			  "ignore case when matching
 " }}}
 
 " Folding {{{
 set foldenable				    "enable folding
 set foldlevelstart=99			"start files completely unfolded
 set foldmethod=indent			"fold based on indentation
-set foldlevel=99                "max fold level
+set foldlevel=99          "max fold level
 " }}}
 
 " Mappings {{{
@@ -135,7 +128,7 @@ vnoremap > >gv
 " }}}
 
 " Airline Settings {{{
-set laststatus=2                "show statusline all the time
+set laststatus=2                             "show statusline all the time
 let g:airline#extendsions#tabline#enabled=1
 " }}}
 
@@ -144,7 +137,7 @@ autocmd BufWritePre * StripWhitespace
 " }}}
 
 " Leader Shortcuts {{{
-let mapleader="\<cr>"    	    "set leader
+let maplocalleader=","    	    "set leader
 " }}}
 
 " CtrlP {{{
@@ -180,10 +173,7 @@ nnoremap <C-c> :lclose<CR>
 nnoremap <C-t> :SyntasticToggleMode<CR>
 
 let g:syntastic_haskell_checkers = ['ghcmod', 'hdevtools', 'hlint']
-let g:syntastic_python_checkers = ['pylint', 'flake8', 'pep8']
 let g:syntastic_ocaml_checkers = ['merlin']
-let g:syntastic_elixir_checkers = ['elixir']
-let g:syntastic_enable_elixir_checker = 1
 " }}}
 
 " YouCompleteMe {{{
@@ -228,24 +218,9 @@ vmap a; :Tabularize /::<CR>
 vmap a- :Tabularize /-><CR>
 " }}}
 
-" Python {{{
-map <silent> gpl :SyntasticCheck pylint<CR>
-map <silent> gp8 :SyntasticCheck pep8<CR>
-map <silent> gf8 :SyntasticCheck flake8<CR>
-" }}}
-
 " Scala {{{
 autocmd BufRead,BufNewFile *.scala set filetype=scala
 let g:scala_scaladoc_indent = 1
-" }}}
-
-" Elixir {{{
-autocmd BufRead,BufNewFile *.ex set filetype=elixir
-autocmd BufRead,BufNewFile *.exs set filetype=elixir
-" }}}
-
-" Prolog {{{
-autocmd BufRead,BufNewFile *.pl set filetype=prolog
 " }}}
 
 " Ocaml {{{

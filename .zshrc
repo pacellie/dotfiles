@@ -112,6 +112,8 @@ pathmunge $HOME/.stack/programs/x86_64-linux/ghc-8.0.2/bin
 pathmunge $HOME/Envs
 pathmunge $HOME/.conscript/bin
 pathmunge /usr/local/lib/elixir/bin
+pathmunge $HOME/.local/Isabelle2017
+pathmunge $HOME/.local/Isabelle2017/bin
 export PATH
 
 # OPAM configuration
