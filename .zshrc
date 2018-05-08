@@ -102,6 +102,9 @@ export WORKON_HOME=~/Envs
 export PROJECT_HOME=$HOME/Documents/Code/Python
 source /usr/local/bin/virtualenvwrapper.sh
 
+# java
+export JAVA_HOME="/usr/lib/jvm/jdk-10.0.1"
+
 # set the path with pathmunge
 pathmunge $HOME/.local/share/umake/bin
 pathmunge $HOME/bin
@@ -114,6 +117,7 @@ pathmunge $HOME/.conscript/bin
 pathmunge /usr/local/lib/elixir/bin
 pathmunge $HOME/.local/Isabelle2017
 pathmunge $HOME/.local/Isabelle2017/bin
+pathmunge $JAVA_HOME/bin
 export PATH
 
 # OPAM configuration
