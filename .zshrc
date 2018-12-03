@@ -89,6 +89,10 @@ alias idea='idea.sh &'
 # PATHS
 #############################################################
 
+# docker
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit -i
+
 # disable auto title
 export DISABLE_AUTO_TITLE='true'
 
@@ -102,8 +106,14 @@ export WORKON_HOME=~/Envs
 export PROJECT_HOME=$HOME/Documents/Code/Python
 source /usr/local/bin/virtualenvwrapper.sh
 
+# javascript
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+nvm use v8.12.0 > /dev/null
+
 # java
-export JAVA_HOME="/usr/lib/jvm/jdk-10.0.1"
+export JAVA_HOME="/usr/lib/jvm/java-8-oracle"
 
 # set the path with pathmunge
 pathmunge $HOME/.local/share/umake/bin
@@ -117,8 +127,27 @@ pathmunge $HOME/.conscript/bin
 pathmunge /usr/local/lib/elixir/bin
 pathmunge $HOME/.local/Isabelle2017
 pathmunge $HOME/.local/Isabelle2017/bin
+pathmunge $HOME/.local/Isabelle2018
+pathmunge $HOME/.local/Isabelle2018/bin
 pathmunge $JAVA_HOME/bin
-export PATH
+pathmunge $HOME/.eclipse/java-photon/eclipse
+pathmunge /opt/Postman/app
+pathmunge $HOME/.cargo/bin
+pathmunge export PATH
 
 # OPAM configuration
 . /home/martin/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/martin/.nvm/versions/node/v8.12.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/martin/.nvm/versions/node/v8.12.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /home/martin/.nvm/versions/node/v8.12.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /home/martin/.nvm/versions/node/v8.12.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+. $HOME/.asdf/asdf.sh
+
+. $HOME/.asdf/completions/asdf.bash
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/martin/.sdkman"
+[[ -s "/home/martin/.sdkman/bin/sdkman-init.sh" ]] && source "/home/martin/.sdkman/bin/sdkman-init.sh"

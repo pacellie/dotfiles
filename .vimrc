@@ -67,7 +67,6 @@ set fileencoding=utf-8
 set fileformat=unix
 set timeoutlen=1000                     "faster mode switching
 set ttimeoutlen=0
-set clipboard=unnamed                   "enable easier copy paste
 " }}}
 
 " Colors {{{
