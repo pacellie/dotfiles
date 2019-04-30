@@ -4,8 +4,9 @@ export ZSH=$HOME/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 COMPLETION_WAITING_DOTS="false"
-plugins=(cabal, virtualenvwrapper, git)
+plugins=(cabal, virtualenvwrapper, git, cargo)
 source $ZSH/oh-my-zsh.sh
+fpath=(~/.zsh/completion $fpath)
 
 # Base 16 Theme
 BASE16_SHELL=$HOME/.config/base16-shell/
@@ -15,10 +16,6 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 autoload bashcompinit
 bashcompinit
 eval "$(_TMUXP_COMPLETE=source tmuxp)"
-
-#############################################################
-# FUNCTIONS
-#############################################################
 
 # don't add anything to the path if it is already there
 pathmunge() {
@@ -53,10 +50,6 @@ ex () {
     fi
 }
 
-#############################################################
-# ALIASES
-#############################################################
-
 # enable color support of ls and grep
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -85,12 +78,10 @@ alias tmux='tmux -2'
 # intellij
 alias idea='idea.sh &'
 
-#############################################################
-# PATHS
-#############################################################
 
-# docker
-fpath=(~/.zsh/completion $fpath)
+# rust
+fpath+=~/.zfunc
+export RUST_SRC_PATH=${HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
 autoload -Uz compinit && compinit -i
 
 # disable auto title
@@ -98,7 +89,7 @@ export DISABLE_AUTO_TITLE='true'
 
 # export the default editor
 export EDITOR='vim'
-export PAGER='less'
+export PAGER='more'
 
 # python
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
@@ -108,14 +99,27 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 # javascript
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 nvm use v8.12.0 > /dev/null
 
 # java
 export JAVA_HOME="/usr/lib/jvm/java-8-oracle"
 
-# set the path with pathmunge
+# emscripten
+# source $HOME/emsdk/emsdk_env.sh
+export EMSDK="$HOME/emsdk"
+export EM_CONFIG="$HOME/.emscripten"
+export LLVM_ROOT="$HOME/emsdk/clang/e1.38.21_64bit"
+export EMSCRIPTEN_NATIVE_OPTIMIZER="$HOME/emsdk/clang/e1.38.21_64bit/optimizer"
+export BINARYEN_ROOT="$HOME/emsdk/clang/e1.38.21_64bit/binaryen"
+export EMSDK_NODE="$HOME/emsdk/node/8.9.1_64bit/bin/node"
+export EMSCRIPTEN="$HOME/emsdk/emscripten/1.38.21"
+
+pathmunge $HOME/emsdk
+pathmunge $HOME/emsdk/clang/e1.38.21_64bit
+pathmunge $HOME/emsdk/node/8.9.1_64bit/bin
+pathmunge $HOME/emsdk/emscripten/1.38.21
 pathmunge $HOME/.local/share/umake/bin
 pathmunge $HOME/bin
 pathmunge $HOME/.local/bin
