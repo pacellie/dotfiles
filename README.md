@@ -8,7 +8,4 @@
 The keybindings and shortcuts i use for i3wm, tmux and vim can be found in
 i3.pdf, tmux.pdf, vim.pdf.
 
-My .vimrc is setup for Haskell, Python, Javascript, HTML, CSS, Latex and
-Markdown.
-
 Feel free to copy and paste.
