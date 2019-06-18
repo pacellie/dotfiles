@@ -88,8 +88,8 @@ autoload -Uz compinit && compinit -i
 export DISABLE_AUTO_TITLE='true'
 
 # export the default editor
-export EDITOR='vim'
-export PAGER='more'
+export EDITOR='code'
+export PAGER='less'
 
 # python
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
@@ -129,10 +129,8 @@ pathmunge $HOME/.stack/programs/x86_64-linux/ghc-8.0.2/bin
 pathmunge $HOME/Envs
 pathmunge $HOME/.conscript/bin
 pathmunge /usr/local/lib/elixir/bin
-pathmunge $HOME/.local/Isabelle2017
-pathmunge $HOME/.local/Isabelle2017/bin
-pathmunge $HOME/.local/Isabelle2018
-pathmunge $HOME/.local/Isabelle2018/bin
+pathmunge $HOME/.local/Isabelle2019
+pathmunge $HOME/.local/Isabelle2019/bin
 pathmunge $JAVA_HOME/bin
 pathmunge $HOME/.eclipse/java-photon/eclipse
 pathmunge /opt/Postman/app
