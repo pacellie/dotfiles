@@ -27,27 +27,13 @@ Plugin 'ervandew/supertab'                  "insert completions with TAB
 Plugin 'kien/ctrlp.vim'                     "fuzzy file search
 
 " Styling
-Plugin 'vim-airline/vim-airline'    		"airline
+Plugin 'vim-airline/vim-airline'    	    "airline
 Plugin 'vim-airline/vim-airline-themes'	    "airline themes'
 Plugin 'chriskempson/base16-vim'            "colorschemes
 
 " Linting and Autocomplete
-Plugin 'scrooloose/syntastic'               "sntastic syntax checker
+Plugin 'scrooloose/syntastic'               "syntastic syntax checker
 Plugin 'valloric/youcompleteme'             "autocomplete
-
-"Markdown and Latex
-Plugin 'suan/vim-instant-markdown'          "markdown preview
-Plugin 'alxhnr/latex_preview'               "latex preview
-
-" Haskell
-Plugin 'eagletmt/ghcmod-vim'                "haskell background checking
-Plugin 'eagletmt/neco-ghc'                  "haskell autocomplete
-Plugin 'Shougo/vimproc.vim'                 "haskell helper
-Plugin 'godlygeek/tabular'                  "haskell lining up
-Plugin 'nbouscal/vim-stylish-haskell'       "format haskell files on save
-
-" Scala
-Plugin 'derekwyatt/vim-scala'
 
 "END PLUGINS
 
@@ -70,8 +56,8 @@ set ttimeoutlen=0
 " }}}
 
 " Colors {{{
-let base16colorspace=256         "Access colors present in 256 colorspace
-syntax enable			        		   "enable syntax processing
+let base16colorspace=256                "Access colors present in 256 colorspace
+syntax enable	         		              "enable syntax processing
 colorscheme base16-google-light
 highlight Search ctermfg=15
 " }}}
@@ -170,9 +156,6 @@ nnoremap <C-p> :lprev<CR>
 nnoremap <C-e> :SyntasticCheck<CR>
 nnoremap <C-c> :lclose<CR>
 nnoremap <C-t> :SyntasticToggleMode<CR>
-
-let g:syntastic_haskell_checkers = ['ghcmod', 'hdevtools', 'hlint']
-let g:syntastic_ocaml_checkers = ['merlin']
 " }}}
 
 " YouCompleteMe {{{
@@ -192,80 +175,4 @@ let g:ycm_semantic_triggers =  {
   \ }
 " }}}
 
-" Haskell {{{
-au BufNewFile,BufRead *.hs set tabstop=2
-au BufNewFile,BufRead *.hs set softtabstop=2
-au BufNewFile,BufRead *.hs set shiftwidth=2
-au BufNewFile,BufRead *.hs set filetype=haskell
-
-" autocomplete
-let g:haskellmode_completion_ghc = 0
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-let g:necoghc_use_stack = 1
-
-" remapping for ghcmod
-map <silent> gmc :GhcModCheck<CR>
-map <silent> gmI :GhcModInfo<CR>
-map <silent> gml :GhcModLint<CR>
-map <silent> gmt :GhcModType<CR>
-map <silent> gmtc :GhcModTypeClear<CR>
-
-" lining up =, ::, ->
-let g:haskell_tabular=1
-vmap a= :Tabularize /=<CR>
-vmap a; :Tabularize /::<CR>
-vmap a- :Tabularize /-><CR>
-" }}}
-
-" Scala {{{
-autocmd BufRead,BufNewFile *.scala set filetype=scala
-let g:scala_scaladoc_indent = 1
-" }}}
-
-" Ocaml {{{
-au FileType ocaml call SuperTabSetDefaultCompletionType("<c-x><c-o>")
-let g:opamshare = substitute(system('opam config var share'), '\n', '', '''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
-set rtp^="home/martin/.opam/4.06.0/share/ocp-indent/vim"
-
-au BufNewFile,BufRead *.ml set tabstop=2
-au BufNewFile,BufRead *.ml set softtabstop=2
-au BufNewFile,BufRead *.ml set shiftwidth=2
-au BufNewFile,BufRead *.ml set filetype=ocaml
-
-let s:opam_share_dir = system("opam config var share")
-let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
-
-let s:opam_configuration = {}
-
-function! OpamConfOcpIndent()
-  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
-endfunction
-let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
-
-function! OpamConfOcpIndex()
-  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
-endfunction
-let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
-
-function! OpamConfMerlin()
-  let l:dir = s:opam_share_dir . "/merlin/vim"
-  execute "set rtp+=" . l:dir
-endfunction
-let s:opam_configuration['merlin'] = function('OpamConfMerlin')
-
-let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
-let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
-let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
-for tool in s:opam_packages
-  " Respect package order (merlin should be after ocp-index)
-  if count(s:opam_available_tools, tool) > 0
-    call s:opam_configuration[tool]()
-  endif
-endfor
-
-if count(s:opam_available_tools,"ocp-indent") == 0
-  source "/home/martin/.opam/4.06.0/share/vim/syntax/ocp-indent.vim"
-endif
-" }}}
 " vim:foldmethod=marker
