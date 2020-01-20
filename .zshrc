@@ -73,7 +73,14 @@ export DISABLE_AUTO_TITLE='true'
 export EDITOR='vim'
 export PAGER='less'
 
-pathmunge export PATH
+export JAVA_HOME='/home/martin/.sdkman/candidates/java/current/bin/'
+
+pathmunge $HOME/Documents/Code/Isabelle/Isabelle2019/bin/
+pathmunge $HOME/Documents/Code/Isabelle/Isabelle2019/
+pathmunge $PATH
 
 export SDKMAN_DIR="/home/martin/.sdkman"
 [[ -s "/home/martin/.sdkman/bin/sdkman-init.sh" ]] && source "/home/martin/.sdkman/bin/sdkman-init.sh"
+
+# OPAM configuration
+. /home/martin/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

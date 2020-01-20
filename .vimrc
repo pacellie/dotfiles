@@ -58,7 +58,7 @@ set ttimeoutlen=0
 " Colors {{{
 let base16colorspace=256                "Access colors present in 256 colorspace
 syntax enable	         		              "enable syntax processing
-colorscheme base16-google-light
+colorscheme base16-material
 highlight Search ctermfg=15
 " }}}
 
