@@ -70,13 +70,14 @@ alias ......='cd ../../../../..'
 export DISABLE_AUTO_TITLE='true'
 
 # export the default editor
-export EDITOR='vim'
+export EDITOR='code'
 export PAGER='less'
 
-export JAVA_HOME='/home/martin/.sdkman/candidates/java/current/bin/'
+export JAVA_HOME='/home/martin/.sdkman/candidates/java/current/bin'
 
-pathmunge $HOME/Documents/Code/Isabelle/Isabelle2019/bin/
-pathmunge $HOME/Documents/Code/Isabelle/Isabelle2019/
+pathmunge $HOME/Documents/Code/Isabelle/Isabelle2019/bin
+pathmunge $HOME/Documents/Code/Isabelle/Isabelle2019
+pathmunge $HOME/.cargo/bin
 pathmunge $PATH
 
 export SDKMAN_DIR="/home/martin/.sdkman"
