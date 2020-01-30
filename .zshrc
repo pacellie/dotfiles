@@ -1,12 +1,11 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 COMPLETION_WAITING_DOTS="false"
 plugins=(git)
+fpath+=~/.zsh/completions
 source $ZSH/oh-my-zsh.sh
-fpath=(~/.zsh/completion $fpath)
+autoload -U compinit && compinit
 
 # Base 16 Theme
 BASE16_SHELL=$HOME/.config/base16-shell/
