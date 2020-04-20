@@ -74,8 +74,6 @@ export PAGER='less'
 
 export JAVA_HOME='/home/martin/.sdkman/candidates/java/current/bin'
 
-pathmunge $HOME/Documents/Code/Isabelle/Isabelle2019/bin
-pathmunge $HOME/Documents/Code/Isabelle/Isabelle2019
 pathmunge $HOME/.cargo/bin
 pathmunge $PATH
 
