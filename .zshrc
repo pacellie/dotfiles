@@ -81,5 +81,5 @@ pathmunge $PATH
 export SDKMAN_DIR="/home/martin/.sdkman"
 [[ -s "/home/martin/.sdkman/bin/sdkman-init.sh" ]] && source "/home/martin/.sdkman/bin/sdkman-init.sh"
 
-# OPAM configuration
-. /home/martin/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+# opam configuration
+test -r /home/martin/.opam/opam-init/init.zsh && . /home/martin/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
