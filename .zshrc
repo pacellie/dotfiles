@@ -73,7 +73,7 @@ export EDITOR='code'
 export PAGER='less'
 
 export JAVA_HOME='/home/martin/.sdkman/candidates/java/current/bin'
-export AFP20='/home/martin/Documents/Code/Isabelle/afp/afp-2020-04-20/thys'
+export AFP20='/home/martin/Documents/Code/Isabelle/afp/afp-2020-04-21/thys'
 
 pathmunge $HOME/.cargo/bin
 pathmunge $PATH
