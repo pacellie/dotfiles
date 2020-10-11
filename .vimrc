@@ -18,7 +18,7 @@ Plugin 'VundleVim/Vundle.vim'
 "to delete a plugin remove it here and run :PluginClean
 
 " Movement and Editing
-Plugin 'tpope/vim-surround'	    	    	"surround
+Plugin 'tpope/vim-surround'	    	    	    "surround
 Plugin 'tpope/vim-commentary'               "commentary
 Plugin 'tpope/vim-repeat'                   "repeat surround and commentary cmds
 Plugin 'jiangmiao/auto-pairs'               "better ({[ ...
@@ -27,13 +27,9 @@ Plugin 'ervandew/supertab'                  "insert completions with TAB
 Plugin 'kien/ctrlp.vim'                     "fuzzy file search
 
 " Styling
-Plugin 'vim-airline/vim-airline'    	    "airline
+Plugin 'vim-airline/vim-airline'    	      "airline
 Plugin 'vim-airline/vim-airline-themes'	    "airline themes'
 Plugin 'chriskempson/base16-vim'            "colorschemes
-
-" Linting and Autocomplete
-Plugin 'scrooloose/syntastic'               "syntastic syntax checker
-Plugin 'valloric/youcompleteme'             "autocomplete
 
 "END PLUGINS
 
@@ -138,42 +134,6 @@ au BufNewFile,BufRead *.tex set smartindent&
 au BufNewFile,BufRead *.tex set indentexpr&
 nmap <F7> :LatexPreview<CR>
 let g:tex_conceal = ''
-" }}}
-
-" Syntastic {{{
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:Syntastic_aggregate_errors = 1
-let g:Syntastic_aggregate_errors = 1
-
-nnoremap <C-n> :lnext<CR>
-nnoremap <C-p> :lprev<CR>
-nnoremap <C-e> :SyntasticCheck<CR>
-nnoremap <C-c> :lclose<CR>
-nnoremap <C-t> :SyntasticToggleMode<CR>
-" }}}
-
-" YouCompleteMe {{{
-let g:ycm_semantic_triggers =  {
-  \   'c' : ['->', '.'],
-  \   'objc' : ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
-  \             're!\[.*\]\s'],
-  \   'ocaml' : ['.', '#'],
-  \   'cpp,objcpp' : ['->', '.', '::'],
-  \   'perl' : ['->'],
-  \   'php' : ['->', '::'],
-  \   'cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go' : ['.'],
-  \   'ruby' : ['.', '::'],
-  \   'lua' : ['.', ':'],
-  \   'erlang' : [':'],
-  \   'haskll' : ['.'],
-  \ }
 " }}}
 
 " vim:foldmethod=marker

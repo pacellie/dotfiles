@@ -2,7 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 COMPLETION_WAITING_DOTS="false"
-plugins=(git)
+plugins=(git zsh-sdkman)
 fpath+=~/.zsh/completions
 source $ZSH/oh-my-zsh.sh
 autoload -U compinit && compinit
@@ -12,6 +12,7 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1"  ] && [ -s $BASE16_SHELL/profile_helper.sh  ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # don't add anything to the path if it is already there
+# pathmung $HOME/...
 pathmunge() {
 	if ! echo $PATH | /bin/egrep -q "(^|:)$1($|:)" ; then
 		if [ "$2" = "after" ] ; then
@@ -73,17 +74,9 @@ export EDITOR='code'
 export PAGER='less'
 
 export JAVA_HOME='/home/martin/.sdkman/candidates/java/current/bin'
-export AFP20='/home/martin/Documents/Code/Isabelle/afp/afp-2020-04-21/thys'
 
-pathmunge $HOME/.cargo/bin
 pathmunge $PATH
 
 export SDKMAN_DIR="/home/martin/.sdkman"
 [[ -s "/home/martin/.sdkman/bin/sdkman-init.sh" ]] && source "/home/martin/.sdkman/bin/sdkman-init.sh"
 
-# opam configuration
-test -r /home/martin/.opam/opam-init/init.zsh && . /home/martin/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-#nvm
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
