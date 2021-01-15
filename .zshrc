@@ -2,7 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 COMPLETION_WAITING_DOTS="false"
-plugins=(git zsh-sdkman)
+plugins=(git)
 fpath+=~/.zsh/completions
 source $ZSH/oh-my-zsh.sh
 autoload -U compinit && compinit
@@ -74,7 +74,13 @@ export EDITOR='code'
 export PAGER='less'
 
 export JAVA_HOME='/home/martin/.sdkman/candidates/java/current/bin'
+export AFP='/home/martin/Documents/afp-2020-09-19/thys'
 
+source "$HOME/.cargo/env"
+fpath+=~/.zfunc
+compinit
+
+pathmunge $HOME/Documents/Isabelle2020/bin
 pathmunge $PATH
 
 export SDKMAN_DIR="/home/martin/.sdkman"
