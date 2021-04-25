@@ -2,7 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 COMPLETION_WAITING_DOTS="false"
-plugins=(git)
+plugins=(git rust rustup stack)
 fpath+=~/.zsh/completions
 source $ZSH/oh-my-zsh.sh
 autoload -U compinit && compinit
@@ -74,15 +74,17 @@ export EDITOR='code'
 export PAGER='less'
 
 export JAVA_HOME='/home/martin/.sdkman/candidates/java/current/bin'
-export AFP='/home/martin/Documents/afp-2020-09-19/thys'
+export AFP='/home/martin/Documents/afp-2021-02-26/thys'
 
 source "$HOME/.cargo/env"
 fpath+=~/.zfunc
 compinit
 
-pathmunge $HOME/Documents/Isabelle2020/bin
+pathmunge $HOME/Documents/Isabelle2021/bin
+pathmunge $HOME/.local/wabt-1.0.23/bin
 pathmunge $PATH
 
 export SDKMAN_DIR="/home/martin/.sdkman"
 [[ -s "/home/martin/.sdkman/bin/sdkman-init.sh" ]] && source "/home/martin/.sdkman/bin/sdkman-init.sh"
 
+[ -f "/home/martin/.ghcup/env" ] && source "/home/martin/.ghcup/env" # ghcup-env
