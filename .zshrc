@@ -2,10 +2,11 @@
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 COMPLETION_WAITING_DOTS="false"
-plugins=(git rust rustup stack)
+plugins=(git rust stack)
+fpath+=~/.zfunc
 fpath+=~/.zsh/completions
 source $ZSH/oh-my-zsh.sh
-autoload -U compinit && compinit
+autoload -Uz compinit ; compinit
 
 # Base 16 Theme
 BASE16_SHELL=$HOME/.config/base16-shell/
@@ -75,16 +76,37 @@ export PAGER='less'
 
 export JAVA_HOME='/home/martin/.sdkman/candidates/java/current/bin'
 export AFP='/home/martin/Documents/afp-2021-02-26/thys'
-
-source "$HOME/.cargo/env"
-fpath+=~/.zfunc
-compinit
-
-pathmunge $HOME/Documents/Isabelle2021/bin
-pathmunge $HOME/.local/wabt-1.0.23/bin
-pathmunge $PATH
-
+export ISABELLE_HOME='/home/martin/Documents/Isabelle2021'
 export SDKMAN_DIR="/home/martin/.sdkman"
 [[ -s "/home/martin/.sdkman/bin/sdkman-init.sh" ]] && source "/home/martin/.sdkman/bin/sdkman-init.sh"
 
+source "$HOME/.cargo/env"
+
 [ -f "/home/martin/.ghcup/env" ] && source "/home/martin/.ghcup/env" # ghcup-env
+
+pathmunge $HOME/Documents/Isabelle2021/bin
+pathmunge $HOME/.local/wabt-1.0.23/bin
+pathmunge $HOME/.local/share/coursier/bin
+pathmunge $HOME/Documents/Code/Monitor/monpoly
+pathmunge $PATH
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/martin/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/martin/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/martin/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/martin/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+#
+conda deactivate
+
+# opam configuration
+test -r /home/martin/.opam/opam-init/init.zsh && . /home/martin/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
