@@ -84,7 +84,7 @@ source "$HOME/.cargo/env"
 
 [ -f "/home/martin/.ghcup/env" ] && source "/home/martin/.ghcup/env" # ghcup-env
 
-pathmunge $HOME/Documents/Isabelle2021/bin
+pathmunge $HOME/Documents/Isabelle2021-1/bin
 pathmunge $HOME/.local/wabt-1.0.23/bin
 pathmunge $HOME/.local/share/coursier/bin
 pathmunge $HOME/Documents/Code/Monitor/monpoly
