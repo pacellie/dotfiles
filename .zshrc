@@ -75,7 +75,7 @@ export EDITOR='code'
 export PAGER='less'
 
 export JAVA_HOME='/home/martin/.sdkman/candidates/java/current/bin'
-export AFP='/home/martin/Documents/afp-2021-02-26/thys'
+export AFP='/home/martin/Documents/afp-2022-07-13/thys'
 export ISABELLE_HOME='/home/martin/Documents/Isabelle2021'
 export SDKMAN_DIR="/home/martin/.sdkman"
 [[ -s "/home/martin/.sdkman/bin/sdkman-init.sh" ]] && source "/home/martin/.sdkman/bin/sdkman-init.sh"
