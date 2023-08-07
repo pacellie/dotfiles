@@ -76,7 +76,7 @@ export PAGER='less'
 
 export JAVA_HOME='/home/martin/.sdkman/candidates/java/current/bin'
 export AFP='/home/martin/Documents/afp-2022-07-13/thys'
-export ISABELLE_HOME='/home/martin/Documents/Isabelle2021'
+export ISABELLE_HOME='/home/martin/Documents/Isabelle2022'
 export SDKMAN_DIR="/home/martin/.sdkman"
 [[ -s "/home/martin/.sdkman/bin/sdkman-init.sh" ]] && source "/home/martin/.sdkman/bin/sdkman-init.sh"
 
@@ -84,9 +84,10 @@ source "$HOME/.cargo/env"
 
 [ -f "/home/martin/.ghcup/env" ] && source "/home/martin/.ghcup/env" # ghcup-env
 
-pathmunge $HOME/Documents/Isabelle2021-1/bin
+pathmunge $HOME/Documents/Isabelle2022/bin
 pathmunge $HOME/.local/wabt-1.0.23/bin
 pathmunge $HOME/.local/share/coursier/bin
+pathmunge $HOME/.local/bin
 pathmunge $HOME/Documents/Code/Monitor/monpoly
 pathmunge $PATH
 

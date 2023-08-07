@@ -1,5 +1,5 @@
 [core]
-	editor = vim
+	editor = code
 [push]
 	default = upstream
 [merg]
@@ -8,7 +8,7 @@
 	name = Martin Rau
 	email = martin.rau@tum.de
 [alias]
-lol = log --graph --all --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold cyan)%d%C(reset)'
+  lol = log --graph --all --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold cyan)%d%C(reset)'
 
 [credential]
 	helper = cache
