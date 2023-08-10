@@ -1,5 +1,5 @@
 [core]
-	editor = code
+	editor = vim
 [push]
 	default = upstream
 [merg]
@@ -14,3 +14,5 @@
 	helper = cache
 [color]
 	ui = auto
+[init]
+	defaultBranch = main
